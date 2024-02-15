@@ -1,0 +1,219 @@
+/**
+ * This is just a bunch of generic math utilities for use in demos and applets.
+ * It has support for 2D vectors, complex numbers, and 3x3 matrices.
+ * This code is protected under the MIT license (see the LICENSE file).
+ * @author Zenzicubic
+ */
+
+// Basic 2D vector class
+export class Vector {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // Sum and difference
+    add = (v) => new Vector(this.x + v.x, this.y + v.y);
+
+    sub = (v) => new Vector(this.x - v.x, this.y - v.y);
+
+    // Scalar multiplication/divisions
+    scale = (s) => new Vector(this.x * s, this.y * s);
+
+    div = (s) => this.scale(1 / s);
+
+    normSq = () => this.dot(this); // Squared norm of a vector
+
+    norm = () => Math.sqrt(this.normSq()); // Norm (length) of a vector
+
+    normalize = () => this.div(this.norm()); // Normalize a vector
+
+    perp = () => new Vector(-this.y, this.x); // Perpendicular vector
+
+    distance = (v) => this.sub(v).norm(); // Distance between two vectors
+
+    dot = (v) => this.x * v.x + this.y * v.y; // Dot product
+
+    cross = (v) => this.x * v.y - this.y * v.x; // Scalar cross product
+
+    clone = () => new Vector(this.x, this.y); // Shallow copy
+}
+
+export const vec2 = (x, y) => new Vector(x, y); // GLSL-style alternative constructor
+export const versor = (t) => vec2(Math.cos(t), Math.sin(t)); // Unit vector with given angle
+
+// 2D vector constants
+Vector.ZERO = vec2(0, 0);
+Vector.UP = vec2(0, 1);
+Vector.DOWN = vec2(0, -1);
+Vector.LEFT = vec2(-1, 0);
+Vector.RIGHT = vec2(1, 0);
+
+/*
+Complex number math.
+*/
+
+export class Complex {
+    /**
+     * Creates a new complex number. 
+     * @param {Number} x Real part.
+     * @param {Number} y Imaginary part.
+     */
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // Adds two complex numbers
+    add = (z) => new Complex(this.x + z.x, this.y + z.y);
+
+    // Subtracts two complex numbers
+    sub = (z) => new Complex(this.x - z.x, this.y - z.y);
+
+    // Complex-complex multiplication
+    mul = (z) => new Complex(this.x * z.x - this.y * z.y, this.x * z.y + this.y * z.x);
+
+    // Complex number-real number multiplication
+    mulRe = (k) => new Complex(this.x * k, this.y * k);
+
+    // Complex-complex division
+    div = (z) => this.mul(z.inv());
+
+    // Complex number-real number division
+    divRe = (k) => this.mulRe(1 / k);
+
+    pow = (n) => {
+        // Complex number-real number exponentiation
+        let len = this.mag() ** n;
+        let arg = this.arg() * n;
+        return cis(arg).mulRe(len);
+    }
+
+    // Complex conjugate
+    conj = () => new Complex(this.x, -this.y);
+
+    // Negation
+    neg = () => this.mulRe(-1);
+
+    // i times the current complex number
+    itimes = () => new Complex(-this.y, this.x);
+
+    // Squared magnitude
+    magSq = () => this.x * this.x + this.y * this.y;
+
+    // Magnitude
+    mag = () => Math.sqrt(this.magSq());
+
+    // Argument
+    arg = () => Math.atan2(this.y, this.x);
+
+    // Reciprocal
+    inv = () => this.conj().divRe(this.magSq());
+
+    // Square
+    sqr = () => this.mul(this);
+
+    // Normalization
+    normalize = () => this.div(this.mag());
+
+    // Distance between complex numbers
+    dist = (z) => this.sub(z).mag();
+
+    sqrt = () => {
+        // Square root
+        let len = this.mag();
+        let sgn = (this.y >= 0 ? 1 : -1);
+        
+        return new Complex(
+            Math.sqrt(0.5 * (len + this.x)),
+            Math.sqrt(0.5 * (len - this.x)) * sgn);
+    }
+}
+
+// Abbreviated constructors
+export const complex = (x, y) => new Complex(x, y);
+export const Re = (k) => complex(k, 0);
+export const Im = (k) => complex(0, k);
+
+// Euler's formula
+export const cis = (t) => complex(Math.cos(t), Math.sin(t));
+
+// Constants
+Complex.ONE = Re(1);
+Complex.I = Im(1);
+Complex.ZERO = complex(0, 0);
+
+/*
+3x3 matrix (column-major) math.
+*/
+
+export class Mat3 {
+    constructor(a, b, c) {
+        this.vals = [a, b, c];
+    }
+
+    mul(m) {
+        // Multiply two matrices
+        let newMat = new Mat3([], [], []);
+
+        for (let c = 0; c < 3; c ++) {
+            for (let r = 0; r < 3; r ++) {
+                newMat.vals[r][c] = this.vals[r][0] * m.vals[0][c] + this.vals[r][1] * m.vals[1][c] + this.vals[r][2] * m.vals[2][c];
+            }
+        }
+
+        return newMat;
+    }
+}
+
+export const mat3 = (a, b, c) => new Mat3(a, b, c);
+
+export const MAT3_IDENTITY = mat3([1, 0, 0], [0, 1, 0], [0, 0, 1]);
+
+// Rotation matrices
+
+export const getRotMatX = (t) => {
+    // Computes the X-axis rotation matrix for a given angle
+    let c = Math.cos(t);
+    let s = Math.sin(t);
+
+    return mat3(
+        [1, 0, 0],
+        [0, c, s],
+        [0, -s, c]
+    );
+}
+
+export const getRotMatY = (t) => {
+    // Computes the Y-axis rotation matrix for a given angle
+    let c = Math.cos(t);
+    let s = Math.sin(t);
+
+    return mat3(
+        [c, 0, s],
+        [0, 1, 0],
+        [-s, 0, c]
+    );
+}
+
+export const getRotMatZ = (t) => {
+    // Computes the Z-axis rotation matrix for a given angle
+    let c = Math.cos(t);
+    let s = Math.sin(t);
+
+    return mat3(
+        [c, s, 0],
+        [-s, c, 0],
+        [0, 0, 1]
+    );
+}
+
+/*
+Other functions.
+*/
+
+// Simple squaring routine
+export const sqr = (x) => x * x;
+
+// Clamp a value to a range
+export const clamp = (t, a, b) => Math.min(b, Math.max(a, t));

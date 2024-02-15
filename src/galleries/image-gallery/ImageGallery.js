@@ -1,0 +1,312 @@
+/**
+ * This is the image gallery page, and an associated component.
+ * Most of this file is just descriptions and info of each image.
+ * This code is protected under the MIT license (see the LICENSE file).
+ * @author Zenzicubic
+ */
+
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { MathJax } from 'better-react-mathjax';
+
+import Gallery from '../gallery-template/Gallery';
+import bgImg from './pics/gamma.png';
+import './img-gallery.css';
+
+/*
+Here is the list of images.
+*/
+
+const images = [
+    {
+        title: "Cubic Surface",
+        description: <>A raytraced image of the cubic surface defined by the equation <MathJax inline>{'\\(z(z^2-1)=x(x^2-3y^2),\\)'}</MathJax> based on <a href="https://mathcurve.com/surfaces.gb/cubic/cubic.shtml" target="_blank" rel="noopener noreferrer">this page by Robert Ferreol</a>.</>,
+        filename: "mathcurve_cubic.png",
+        date: "14 Feb 2024"
+    },
+    {
+        title: "Tritrumpet",
+        description: <>A raytraced image of the <a href="http://www.paulbourke.net/geometry/tritrumpet/" target="_blank" rel="noopener noreferrer">tritrumpet</a> cubic surface defined by the equation <MathJax inline>{'\\(8z^2+(2x+1)(3y^2-(x-1)^2)=0.\\)'}</MathJax></>,
+        filename: "tritrumpet.png",
+        date: "14 Feb 2024"
+    },
+    {
+        title: "Goursat Cubic",
+        description: <>A raytraced image of Goursat&apos;s tetrahedral cubic surface defined by the equation <MathJax inline>{'\\(x^2+y^2+z^2-kxyz=1,\\)'}</MathJax> with <MathJax inline>{'\\(k = \\frac{5}{2}\\)'}</MathJax> in this image.</>,
+        filename: "goursat_cubic.png",
+        date: "13 Feb 2024"
+    },
+    {
+        title: "Clebsch Cubic",
+        description: <>A raytraced image of a view of the famous <a href="https://blogs.ams.org/visualinsight/2016/03/01/clebsch-surface/" target="_blank" rel="noopener noreferrer">Clebsch cubic</a> in <MathJax inline>{'\\(\\mathbb{R}^3.\\)'}</MathJax></>,
+        filename: "clebsch_cubic.png",
+        date: "13 Feb 2024"
+    },
+    {
+        title: "Cayley Cubic no. 2",
+        description: <>A raytraced image of another view of Cayley&apos;s nodal cubic surface in <MathJax inline>{'\\(\\mathbb{R}^3\\)'}</MathJax>, described by the equation <MathJax inline>{'\\(x^2+y^2+z^2-2xyz=1.\\)'}</MathJax></>,
+        filename: "cayley_cubic_2.png",
+        date: "13 Feb 2024"
+    },
+    
+    {
+        title: "Cayley Cubic no. 1",
+        description: <>A raytraced image of <a href="https://mathcurve.com/surfaces.gb/cayley/cayley.shtml" target="_blank" rel="noopener noreferrer">a view</a> of Cayley&apos;s nodal cubic surface in <MathJax inline>{'\\(\\mathbb{R}^3.\\)'}</MathJax> I built a raytracer for cubic surfaces to make this series of images.</>,
+        filename: "cayley_cubic_1.png",
+        date: "13 Feb 2024"
+    },
+    {
+        title: "Sanderling",
+        description: "A picture I took of a sanderling at Barnegat Light State Park in New Jersey.",
+        filename: "sanderling.png",
+        date: "2 Feb 2024"
+    },
+    {
+        title: "Red-breasted Merganser",
+        description: "A picture I took of a red-breasted merganser male showing his crest at Barnegat Light State Park in New Jersey.",
+        filename: "merganser.png",
+        date: "2 Feb 2024"
+    },
+    {
+        title: "Long-tailed Duck Male",
+        description: "A picture of one of my favorite sea ducks: a long-tailed duck male, taken by me at Barnegat Light State Park in New Jersey.",
+        filename: "longtail2.png",
+        date: "2 Feb 2024"
+    },
+    {
+        title: "Newton Fractal no. 6",
+        description: <>A view of the Newton fractal for the polynomial <MathJax inline>{"\\(z^8+15z^4-16.\\)"}</MathJax></>,
+        filename: "newtonfractal6.png",
+        date: "8 Jan 2024"
+    },
+    {
+        title: "Newton Fractal no. 5",
+        description: <>A view of the Newton fractal for the polynomial <MathJax inline>{"\\(z^3+2.57z^2+1,\\)"}</MathJax> zoomed to show one of the hidden Julia sets within.</>,
+        filename: "newtonfractal5.png",
+        date: "8 Jan 2024"
+    },
+    {
+        title: "Newton Fractal no. 4",
+        description: <>A view of the Newton fractal for the polynomial <MathJax inline>{"\\(z^4-4z^2-6\\)"}</MathJax>.</>,
+        filename: "newtonfractal4.png",
+        date: "8 Jan 2024"
+    },
+    {
+        title: "Newton Fractal no. 3",
+        description: <>A view of the Newton fractal for the polynomial <MathJax inline>{"\\(z^5+z^3-1\\)"}</MathJax>.</>,
+        filename: "newtonfractal3.png",
+        date: "8 Jan 2024"
+    },
+    {
+        title: "Newton Fractal no. 2",
+        description: <>A view of the Newton fractal for the polynomial <MathJax inline>{"\\(z^6+z^3-1\\)"}</MathJax>.</>,
+        filename: "newtonfractal2.png",
+        date: "8 Jan 2024"
+    },
+    {
+        title: "Newton Fractal no. 1",
+        description: <>A view of the Newton fractal for the polynomial <MathJax inline>{"\\(z^5-1\\)"}</MathJax>.</>,
+        filename: "newtonfractal1.png",
+        date: "8 Jan 2024"
+    },
+    {
+        title: "Loon in Flight",
+        description: "A picture of a red-throated loon starting to fly. I took this picture at Sandy Hook NWR in New Jersey.",
+        filename: "redthroatedloon.png",
+        date: "31 December 2023"
+    },
+    {
+        title: "Islamic-style Hyperbolic Tiling",
+        description: <>A <MathJax inline>{"\\(\\{4, 5\\}\\)"}</MathJax> hyperbolic tiling with a pattern based on zellij tiles and girih patterns from Islamic geometric design.</>,
+        filename: "islamictiling.png",
+        date: "29 December 2023"
+    },
+    {
+        title: "Heron",
+        description: "A picture of a great blue heron I took to test out a new lens. I think it came out quite nice.",
+        filename: "heron.png",
+        date: "25 December 2023"
+    },
+    {
+        title: "Heptagonal Band",
+        description: <>The <MathJax inline>{"\\(\\{7, 3\\}\\)"}</MathJax> hyperbolic tiling in the band model.</>,
+        filename: "heptaband.png",
+        date: "9 December 2023"
+    },
+    {
+        title: "Heptagonal Half-Plane",
+        description: <>The <MathJax inline>{"\\(\\{7, 3\\}\\)"}</MathJax> hyperbolic tiling in the Poincar&eacute; half-plane model.</>,
+        filename: "heptahalf.png",
+        date: "9 December 2023"
+    },
+    {
+        title: "Square Model",
+        description: <>The <MathJax inline>{"\\(\\{5, 4\\}\\)"}</MathJax> hyperbolic tiling in an <a href="http://archive.bridgesmathart.org/2018/bridges2018-59.pdf" target="_blank" rel="noopener noreferrer">approximate square model</a> of the hyperbolic plane.</>,
+        filename: "squaremodel.png",
+        date: "7 December 2023"
+    },
+    {
+        title: "Cardioid Model",
+        description: <>The <MathJax inline>{"\\(\\{4, 6\\}\\)"}</MathJax> hyperbolic tiling in the Poincar&eacute; disk with the conformal map <MathJax inline>{"\\(z \\mapsto (z+1)^2 \\)"}</MathJax> applied.</>,
+        filename: "cardioidmodel.png",
+        date: "7 December 2023"
+    },
+    {
+        title: "Triangle Group",
+        description: "An image of the 732 triangle group.",
+        filename: "732trigroup.png",
+        date: "6 December 2023"
+    },
+    {
+        title: "Jacobi CN",
+        description: <>A plot of the Jacobi elliptic function <MathJax inline>{'\\(\\text{cn}(z, 0.5)\\)'}</MathJax> made using a domain coloring program I wrote.</>,
+        filename: "cn.png",
+        date: "5 November 2023"
+    },
+    {
+        title: "Gamma Function",
+        description: <>A domain-coloring plot of the gamma function <MathJax inline>{'\\(\\Gamma(z)\\)'}</MathJax> in the complex plane.</>,
+        filename: "gamma.png",
+        date: "5 November 2023"
+    },
+    {
+        title: "Digamma Function",
+        description: <>A domain-coloring plot of the digamma function <MathJax inline>{'\\(\\psi(z)\\)'}</MathJax> in the complex plane.</>,
+        filename: "digamma.png",
+        date: "5 November 2023"
+    },
+    {
+        title: "Lemniscate Sine",
+        description: <>A domain-coloring plot of the lemniscate sine function <MathJax inline>{'\\(\\text{sl}(z)\\)'}</MathJax> in the complex plane.</>,
+        filename: "sl.png",
+        date: "5 November 2023"
+    },
+    {
+        title: "Lambert W",
+        description: <>A domain-coloring plot of the Lambert W function <MathJax inline>{'\\(W(z)\\)'}</MathJax> in the complex plane.</>,
+        filename: "lambertw.png",
+        date: "5 November 2023"
+    },
+    {
+        title: "Icosahedral Function",
+        description: <>A domain-coloring plot of <a href="https://math.stackexchange.com/questions/1469554/polyhedral-symmetry-in-the-riemann-sphere" target="_blank" rel="noopener noreferrer">a rational function with icosahedral symmetry.</a></>,
+        filename: "icosa.png",
+        date: "5 November 2023"
+    },
+    {
+        title: "Icosahedral Sphere Inversion",
+        description: "A fractal pattern generated by iterated inversion in spheres arranged in an icosahedron.",
+        filename: "icosahedral_sph_inv.png",
+        date: "14 September 2023"
+    },
+    {
+        title: "Coal Dumper",
+        description: "A picture I took of the abandoned McMyler coal dumper in Port Reading, NJ.",
+        filename: "coaldumper.jpg",
+        date: "30 August 2023"
+    },
+    {
+        title: "Wada",
+        description: "An image of chaotic scattering phenomena between spheres in an octahedral arrangement.",
+        filename: "wada.png",
+        date: "8 July 2023"
+    },
+    {
+        title: "Woodhouse's Scrub-Jay",
+        description: "A picture I took of a Woodhouse's scrub-jay at the Randall Davey Audubon Center in New Mexico.",
+        filename: "jay.jpg",
+        date: "14 April 2023"
+    },
+    {
+        title: "Gambel's Quail",
+        description: "A picture I took of a Gambel's quail in the Bosque del Apache NWR in New Mexico.",
+        filename: "gambelsquail.jpg",
+        date: "12 April 2023"
+    },
+    {
+        title: "Fuchsian Group",
+        description: "An image of the orbit of four discs under a Fuchsian Schottky group.",
+        filename: "fuchsian.png",
+        date: "16 March 2023"
+    },
+    {
+        title: "Gaussian Rationals",
+        description: <>An image of some of the <a href="https://math.stackexchange.com/questions/4617218/why-do-the-gaussian-rationals-make-these-patterns" target="_blank" rel="noopener noreferrer">Gaussian rationals</a>, or complex numbers with rational real and imaginary parts.</>,
+        filename: "gaussianrationals.png",
+        date: "12 January 2023"
+    },
+    {
+        title: "Burrowing Owl",
+        description: "I took this picture of a burrowing owl (Athene cunicularia) at a baseball field in Cape Coral, FL.",
+        filename: "burrowingowl.jpg",
+        date: "22 November 2021"
+    }
+];
+
+/*
+This component describes a single image display.
+*/
+
+function Image(props) {
+    return (
+        <div className="gallery-img-container">
+            <div className="gallery-img-display">
+                <img className="gallery-img" src={props.url} loading="lazy"
+                    alt={props.title} onClick={() => props.onClick(props.idx)}/>
+            </div>
+            <div className="gallery-img-content">
+                <h3>{props.title}</h3>
+                <h5>{props.date}</h5>
+                <p>{props.description}</p>
+            </div>
+        </div>
+    );
+}
+
+/*
+This component describes the actual gallery page.
+*/
+
+function ImageGallery() {
+    const [showPopup, setPopupVisibility] = useState(false);
+    const [selectedImg, setSelectedImg] = useState(0);
+    const [imgUrls, setImgUrls] = useState([]);
+
+    // Get the image URL's on mount
+    useEffect(() => {
+        let urls = [];
+        for (let image of images) {
+            urls.push(require("./pics/" + image.filename));
+        }
+        setImgUrls(urls);
+    }, []);
+
+    return (
+        <>
+            <title>Gallery | Zenzicubic</title>
+            <div id="img-gallery-popup"
+                className={(showPopup ? "visible" : "")}>
+                <img id="gallery-popup-img" src={imgUrls[selectedImg]} 
+                    alt={images[selectedImg].title} />
+                <button onClick={() => setPopupVisibility(false) } id="gallery-close-btn">
+                    <span className="material-icons">close</span>
+                </button>
+            </div>
+            <Gallery 
+                title="Gallery"
+                description="These are random images that I&apos;ve collected over the years and thought would be worth showing. These are mostly mathematical, but there may also be a few bird photos and other miscellaneous photos mixed in." 
+                bgImg={bgImg}>
+                    {images.map((img, idx) => 
+                        <Image title={img.title} description={img.description}
+                            date={img.date} url={imgUrls[idx]} key={"image-" + idx}
+                            idx={idx} onClick={(i) => {
+                                setSelectedImg(i);
+                                setPopupVisibility(true);
+                            }} />
+                    )}
+            </Gallery>
+        </>
+    );
+}
+
+export default ImageGallery;

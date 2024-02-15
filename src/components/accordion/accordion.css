@@ -1,0 +1,39 @@
+.accordion {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    background-color: var(--dark-col-3);
+}
+
+.accordion:not(:last-child) { 
+    margin-bottom: var(--small-spacing); 
+}
+
+.accordion-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    padding: var(--small-spacing);
+}
+
+.accordion-title {    
+    color: var(--light-col-1);
+}
+
+.accordion.active > .accordion-top {
+    border-bottom: var(--border); 
+}
+
+.accordion-content {
+    display: none;
+
+    padding:  var(--small-spacing);
+}
+
+.accordion.active > .accordion-content { 
+    display: block; 
+}
+
+.accordion-button {
+    font-weight: bold;
+}
