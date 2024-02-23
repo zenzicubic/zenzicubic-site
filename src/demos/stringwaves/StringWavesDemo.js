@@ -344,7 +344,7 @@ function StringWavesDemo() {
             </Accordion>
 
             <Accordion title="How do I use this?">
-                Click and drag the block on the left hand side of the screen to move the string up and down. The program initializes with a Gaussian wave packet. Use the sliders to change the constants. Use the checkbox to change the color mode. Use the <strong>Play/Pause</strong> button to play or pause the demo, and the <strong>Reset</strong> button to reset.
+                Click and drag the block on the left hand side of the screen to move the string up and down. The program initializes with a Gaussian wave packet. Use the sliders to change the constants. Use the checkbox to change the color mode. Use the <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> button to play or pause the demo, and the <span className="material-symbols-outlined small">replay</span> button to reset.
             </Accordion>
             <hr />
 
@@ -368,7 +368,7 @@ function StringWavesDemo() {
                     <span className="material-icons" ref={iconRef}>pause</span>
                 </button>
                 <button onClick={resetString}>
-                    <span className="material-icons">replay</span> Reset
+                    <span className="material-icons">replay</span>
                 </button>
             </ButtonGroup>
         </Demo>

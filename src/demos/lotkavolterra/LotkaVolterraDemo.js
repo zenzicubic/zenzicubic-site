@@ -307,7 +307,7 @@ function LotkaVolterraDemo() {
                 As for the coefficients, <MathJax inline>{'\\(\\alpha\\)'}</MathJax> represents prey population growth rate, <MathJax inline>{'\\(\\beta\\)'}</MathJax> represents prey predation rate, <MathJax inline>{'\\(\\gamma\\)'}</MathJax> represents predator population growth relative to prey predation, and <MathJax inline>{'\\(\\delta\\)'}</MathJax> represents predator death rate. The equations are integrated using Runge-Kutta 4 (RK4) integration.
             </Accordion>
             <Accordion title="How do I use this?">
-                This program has two views of the system: a view in the <MathJax inline>{'\\(x - y\\)'}</MathJax> phase plane and a view of the time-series plots of the two variables. Use the menu on the bottom right to switch between them. Use the sliders to adjust the initial conditions and coefficients (see above for their meaning). Elapsed time is in the upper left-hand corner. Press <strong>Play/Pause</strong> to play or pause the simulation, and <strong>Reset</strong> to reset the simulation.
+                This program has two views of the system: a view in the <MathJax inline>{'\\(x - y\\)'}</MathJax> phase plane and a view of the time-series plots of the two variables. Use the menu on the bottom right to switch between them. Use the sliders to adjust the initial conditions and coefficients (see above for their meaning). Elapsed time is in the upper left-hand corner. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the simulation, and <span className="material-symbols-outlined small">replay</span> to reset the simulation.
             </Accordion>
             <hr />
 
@@ -354,7 +354,7 @@ function LotkaVolterraDemo() {
                     <span className="material-icons" ref={iconRef}>pause</span>
                 </button>
                 <button onClick={resetDemo}>
-                    <span className="material-icons">replay</span> Reset
+                    <span className="material-icons">replay</span>
                 </button>
             </ButtonGroup>
         </Demo>

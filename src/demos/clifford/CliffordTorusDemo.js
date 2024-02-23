@@ -280,8 +280,8 @@ function CliffordTorusDemo() {
             <Accordion title="What is this?">
                 The Clifford torus is the Cartesian product of two circles, meaning that the Clifford torus is composed of all pairs of complex numbers of unit magnitude, and can be parameterized as such:
                 <MathJax>{`\\(
-                    T = \\left\\{ (e^{i \\theta}, e^{i \\varphi}) \\ | \\ 0 \\geq 
-                    \\theta \\gt 2 \\pi, 0 \\geq \\varphi \\gt 2 \\pi \\right\\}
+                    T = \\left\\{ (e^{i \\theta}, e^{i \\varphi}) \\ | \\ 0 \\leq 
+                    \\theta \\lt 2 \\pi, 0 \\leq \\varphi \\lt 2 \\pi \\right\\}
                 \\)`}</MathJax><br />
 
                 For this visualization, I&apos;ve rescaled it by a factor of <MathJax inline>{'\\(\\frac{1}{\\sqrt{2}}\\)'}</MathJax> so that it lies on the unit 3-sphere. This demo supports two projections: stereographic and orthographic. The orthographic projections of the Clifford torus are self-intersecting surfaces called <a href="https://mathcurve.com/surfaces.gb/boheme/boheme.shtml" target="_blank" rel="noopener noreferrer">Bohemian domes</a>.

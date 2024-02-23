@@ -299,7 +299,7 @@ function SpirographDemo() {
             <p>This is a web version of the Spirograph, the classic children&apos;s toy. You can choose different &quot;gears&quot; and colors to make your own designs. In technical terms, both this demo and the toy draw <a href="https://en.wikipedia.org/wiki/Hypotrochoid" target="_blank" rel="noopener noreferrer">hypotrochoids</a>.</p>
 
             <Accordion title="How do I use this?">
-                Select a gear from the list, and use the color picker to choose the color of the curve being drawn. Press <strong>Play/Pause</strong> to play or pause the animation, and <strong>Clear</strong> to clear the canvas. Press <strong>Save image</strong> to save your creation. If the animation is paused, you can change the position of the trace point by clicking and dragging the white circle. Use the checkbox to show or hide the gears.
+                Select a gear from the list, and use the color picker to choose the color of the curve being drawn. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the animation, and <span className="material-symbols-outlined small">delete</span> to clear the canvas. Press <span className="material-symbols-outlined small">save</span> to save your creation. If the animation is paused, you can change the position of the trace point by clicking and dragging the white circle. Use the checkbox to show or hide the gears.
             </Accordion>
 
             <hr />
@@ -308,10 +308,10 @@ function SpirographDemo() {
                     <span className="material-icons" ref={iconRef}>play_arrow</span>
                 </button>
                 <button onClick={clearBuffer}>
-                    <span className="material-symbols-outlined">delete</span> Clear
+                    <span className="material-symbols-outlined">delete</span>
                 </button>
                 <button onClick={saveImg}>
-                    <span className="material-symbols-outlined">save</span> Save image
+                    <span className="material-symbols-outlined">save</span>
                 </button>
             </ButtonGroup>
 

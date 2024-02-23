@@ -123,11 +123,16 @@ button:hover {
     background-color: var(--elt-col-3) !important; 
 }
 
-span.material-symbols-outlined, span.material-icons {
+.material-symbols-outlined, .material-icons {
     user-select: none;
 	vertical-align: middle;
     
     color: var(--light-col-1);
+    font-size: var(--btn-font-size);
+}
+
+.material-symbols-outlined.small, .material-icons.small {
+    font-size: 1em;
 }
 
 /*

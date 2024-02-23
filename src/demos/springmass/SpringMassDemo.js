@@ -17,6 +17,7 @@ import { vec2, sqr, clamp } from '../../math';
 const dt = 0.05;
 
 // Drawing constants
+const initialState = vec2(2, 0);
 const pathThickness = 2;
 const pathCol = "#f2c14e";
 const textY = 14;
@@ -67,7 +68,7 @@ function SpringMassDemo() {
 
     // Integrator state and path
     const elapsedTime = useRef(0);
-    const state = useRef(vec2(2, 0));
+    const state = useRef(null);
     const dispPath = useRef([]);
     const phasePath = useRef([]);
 
@@ -81,14 +82,20 @@ function SpringMassDemo() {
     Performing numerical integration and resetting.
     */
 
-    const resetDemo = useCallback(() => {
-        // Resets the path and state
+    const resetTrace = useCallback(() => {
+        // Resets the path and velocity
         dispPath.current = [];
         phasePath.current = [];
 
         state.current.y = 0;
         elapsedTime.current = 0;
     }, []);
+    
+    const resetDemo = useCallback(() => {
+        // Resets the entire demo
+        state.current = initialState;
+        resetTrace();
+    }, [resetTrace]);
 
     const func = useCallback((st) => {
         // The differential equation to be integrated
@@ -344,9 +351,9 @@ function SpringMassDemo() {
 
             // Set state
             state.current.x = clamp(newDisp, minSpringLen, maxSpringLen);
-            resetDemo();
+            resetTrace();
         }
-    }, [mapBlockY, resetDemo]);
+    }, [mapBlockY, resetTrace]);
 
     const handleDragEnd = useCallback(() => {
         // Restart the animation
@@ -415,7 +422,7 @@ function SpringMassDemo() {
             <Accordion title="How do I use this?">
                 There are three different views: a visualization of the spring and mass, a <MathJax inline>{'\\(x-\\dot{x}\\)'}</MathJax> phase plane plot, and a time-series plot. Use the menu at the bottom to switch between them. You can move the mass (the white square) by clicking and dragging it when in the system view.<br /><br />
                 
-                The physical parameters of the system (mass <MathJax inline>{'\\(m\\)'}</MathJax>, damping <MathJax inline>{'\\(\\mu\\)'}</MathJax> and spring constant <MathJax inline>{'\\(k\\)'}</MathJax>) may be modified using the sliders. The elapsed time, potential, and kinetic energy are displayed in the upper left-hand corner. Use the <strong>Play/Pause</strong> button to play or pause the animation. To reset the simulation, press the <strong>Reset</strong> button. Any time the spring is moved the simulation is automatically reset.
+                The physical parameters of the system (mass <MathJax inline>{'\\(m\\)'}</MathJax>, damping <MathJax inline>{'\\(\\mu\\)'}</MathJax> and spring constant <MathJax inline>{'\\(k\\)'}</MathJax>) may be modified using the sliders. The elapsed time, potential, and kinetic energy are displayed in the upper left-hand corner. Use the <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> button to play or pause the animation. To reset the simulation, press the <span className="material-symbols-outlined small">replay</span> button. Any time the spring is moved the simulation is automatically reset.
             </Accordion>
             <hr />
 
@@ -438,7 +445,7 @@ function SpringMassDemo() {
                     <span className="material-icons" ref={iconRef}>pause</span>
                 </button>
                 <button onClick={resetDemo}>
-                    <span className="material-icons">replay</span> Reset
+                    <span className="material-icons">replay</span>
                 </button>
             </ButtonGroup>
         </Demo>
