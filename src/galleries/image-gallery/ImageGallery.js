@@ -19,6 +19,12 @@ Here is the list of images.
 
 const images = [
     {
+        title: "Abandoned Resort",
+        description: <>A picture I took a few weeks ago at the abandoned Unity House resort in the Poconos between PA and NJ.</>,
+        filename: "unityhouse.png",
+        date: "2 Mar 2024"
+    },
+    {
         title: "Cubic Surface",
         description: <>A raytraced image of the cubic surface defined by the equation <MathJax inline>{'\\(z(z^2-1)=x(x^2-3y^2),\\)'}</MathJax> based on <a href="https://mathcurve.com/surfaces.gb/cubic/cubic.shtml" target="_blank" rel="noopener noreferrer">this page by Robert Ferreol</a>.</>,
         filename: "mathcurve_cubic.png",
