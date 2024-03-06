@@ -7,7 +7,7 @@
 import React from 'react';
 import { useRef, useCallback, forwardRef, useImperativeHandle } from 'react';
 
-import Demo from '../../components/demo/Demo';
+import { CanvasDemo } from '../../components/demos/demos';
 import { vec2 } from '../../math';
 
 // Constants
@@ -226,14 +226,14 @@ const CurveDemo = forwardRef(function CurveDemo(props, ref) {
     }));
 
     return (
-        <Demo title={props.title} canvasRef={canvasRef} onInitialize={initialize} 
+        <CanvasDemo title={props.title} canvasRef={canvasRef} onInitialize={initialize} 
             onResize={onResize} onInteractionStart={startDrag} onInteractionMove={onDrag} 
             onInteractionEnd={() => { isDragging.current = false; }}>
                 {props.children}
                 <button onClick={setPlayState}>
                     <span className="material-icons" ref={iconRef}>pause</span>
                 </button>
-        </Demo>    
+        </CanvasDemo>    
     );
 });
 

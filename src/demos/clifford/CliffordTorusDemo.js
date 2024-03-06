@@ -14,11 +14,11 @@ import { Vector3, WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight,
 import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-import Demo from '../../components/demo/Demo';
 import Checkbox from '../../components/checkbox/Checkbox';
 import Accordion from '../../components/accordion/Accordion';
 import '../../components/buttons/button-menu.css';
 import PressableIcon from '../../components/buttons/PressableIcon';
+import { CanvasDemo } from '../../components/demos/demos';
 
 // Constants
 
@@ -274,7 +274,7 @@ function CliffordTorusDemo() {
 
     return (<>
         <title>Clifford torus | Zenzicubic</title>
-        <Demo title="Clifford torus" canvasRef={canvasRef} onInitialize={initialize} onResize={handleResize}>
+        <CanvasDemo title="Clifford torus" canvasRef={canvasRef} onInitialize={initialize} onResize={handleResize}>
             <p>This is an interactive visualization of the <a href="https://en.wikipedia.org/wiki/Clifford_torus" target="_blank" rel="noopener noreferrer">Clifford torus</a>, a 4-dimensional analogue of the familiar 3-dimensional torus.</p>
 
             <Accordion title="What is this?">
@@ -298,7 +298,7 @@ function CliffordTorusDemo() {
             <button onClick={handleRotPause}>
                 <span className="material-icons" ref={iconRef}>pause</span>
             </button>
-        </Demo>
+        </CanvasDemo>
         <div className="button-menu">
             <PressableIcon onPress={rotateForward} onRelease={stopRotating}>rotate_left</PressableIcon>
             <PressableIcon onPress={rotateBackward} onRelease={stopRotating}>rotate_right</PressableIcon>

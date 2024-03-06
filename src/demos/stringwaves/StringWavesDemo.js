@@ -7,10 +7,10 @@ import React from 'react';
 import { useRef, useCallback } from 'react';
 import { MathJax } from 'better-react-mathjax';
 
-import Demo from '../../components/demo/Demo';
 import Slider from '../../components/slider/Slider';
 import Checkbox from '../../components/checkbox/Checkbox';
 import Accordion from '../../components/accordion/Accordion';
+import { CanvasDemo } from '../../components/demos/demos';
 import { ButtonGroup } from '../../components/groups/groups';
 import { Vector, vec2, clamp } from '../../math';
 
@@ -322,7 +322,7 @@ function StringWavesDemo() {
 
     return (<>
         <title>Waves on a string | Zenzicubic</title>
-        <Demo title="Waves on a string" canvasRef={canvasRef} onInitialize={initialize}
+        <CanvasDemo title="Waves on a string" canvasRef={canvasRef} onInitialize={initialize}
             onResize={handleResize} onInteractionStart={onDragStart} onInteractionMove={onDrag}
             onInteractionEnd={() => isDragging.current = false }>
             <p>This is an interactive computer simulation of waves on a string with one end movable and the other end fixed.</p>
@@ -371,7 +371,7 @@ function StringWavesDemo() {
                     <span className="material-icons">replay</span>
                 </button>
             </ButtonGroup>
-        </Demo>
+        </CanvasDemo>
     </>);
 }
 

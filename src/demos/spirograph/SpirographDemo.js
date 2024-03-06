@@ -6,10 +6,10 @@
 import React from 'react';
 import { useRef, useState, useCallback } from 'react';
 
-import Demo from '../../components/demo/Demo';
 import Accordion from '../../components/accordion/Accordion';
 import ColorPicker from '../../components/colorpicker/ColorPicker';
 import Checkbox from '../../components/checkbox/Checkbox';
+import { CanvasDemo } from '../../components/demos/demos';
 import { colors } from '../../components/colorpicker/ColorPicker';
 import { ButtonGroup } from '../../components/groups/groups';
 import { Vector, vec2, versor } from '../../math';
@@ -293,7 +293,7 @@ function SpirographDemo() {
 
     return (<>
         <title>Spirograph | Zenzicubic</title>
-        <Demo title="Spirograph" canvasRef={canvasRef} onInitialize={initialize} 
+        <CanvasDemo title="Spirograph" canvasRef={canvasRef} onInitialize={initialize} 
             onResize={handleResize} onInteractionStart={onDragStart} onInteractionMove={onDrag} 
             onInteractionEnd={() => isDragging.current = false}>
             <p>This is a web version of the Spirograph, the classic children&apos;s toy. You can choose different &quot;gears&quot; and colors to make your own designs. In technical terms, both this demo and the toy draw <a href="https://en.wikipedia.org/wiki/Hypotrochoid" target="_blank" rel="noopener noreferrer">hypotrochoids</a>.</p>
@@ -345,7 +345,7 @@ function SpirographDemo() {
             <Checkbox label="Show gears" name="doGears" isChecked={doGears.current} onChange={(checked) => {
                 doGears.current = checked;
             }}/>
-        </Demo>
+        </CanvasDemo>
     </>);
 }
 

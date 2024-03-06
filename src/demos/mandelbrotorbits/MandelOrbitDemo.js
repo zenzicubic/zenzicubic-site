@@ -9,8 +9,8 @@ import { useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Complex, complex } from '../../math';
+import { CanvasDemo } from '../../components/demos/demos';
 import Checkbox from '../../components/checkbox/Checkbox';
-import Demo from '../../components/demo/Demo';
 import fractalImg from './mandelbrot_set.png';
 
 // Constants
@@ -180,7 +180,7 @@ function MandelOrbitDemo() {
 
     return (<>
         <title>Mandelbrot orbits | Zenzicubic</title>
-        <Demo title="Mandelbrot orbits" canvasRef={canvasRef} onInitialize={initialize} 
+        <CanvasDemo title="Mandelbrot orbits" canvasRef={canvasRef} onInitialize={initialize} 
             onResize={resize} onInteractionStart={() => isDragging.current = true }
             onInteractionMove={handleMove} onInteractionEnd={() => isDragging.current = false }>
                 <p>This is a visualization of the internal orbits of the Mandelbrot set. I have more info <Link to="/mandelbrotexplained">here</Link>. Click and drag, and a path will emerge.</p>
@@ -188,7 +188,7 @@ function MandelOrbitDemo() {
                 <Checkbox name="doLines" isChecked={doLines.current} label="Show lines" onChange={(checked) => {
                     doLines.current = checked;
                 }} />
-        </Demo>    
+        </CanvasDemo>    
     </>);
 }
 

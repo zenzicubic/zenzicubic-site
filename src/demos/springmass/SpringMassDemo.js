@@ -7,9 +7,9 @@ import React from 'react';
 import { useRef, useCallback } from 'react';
 import { MathJax } from 'better-react-mathjax';
 
-import Demo from '../../components/demo/Demo';
 import Slider from '../../components/slider/Slider';
 import Accordion from '../../components/accordion/Accordion';
+import { CanvasDemo } from '../../components/demos/demos';
 import { ButtonGroup, TabGroup } from '../../components/groups/groups';
 import { vec2, sqr, clamp } from '../../math';
 
@@ -404,7 +404,7 @@ function SpringMassDemo() {
 
     return (<>
         <title>Spring-mass system | Zenzicubic</title>
-        <Demo title="Spring-mass system" canvasRef={canvasRef} onInitialize={initialize}
+        <CanvasDemo title="Spring-mass system" canvasRef={canvasRef} onInitialize={initialize}
             onResize={handleResize} onInteractionStart={startDrag} onInteractionMove={handleDrag}
             onInteractionEnd={handleDragEnd}>
             <p>This is an interactive simulation of a simple damped spring-mass system, which you may know about from your physics classes.</p>
@@ -448,7 +448,7 @@ function SpringMassDemo() {
                     <span className="material-icons">replay</span>
                 </button>
             </ButtonGroup>
-        </Demo>
+        </CanvasDemo>
         <TabGroup title="View:" btnNames={["System", "Phase plane", "Time-series"]} 
             onTabChange={(mode) => viewMode.current = mode }/>
     </>);

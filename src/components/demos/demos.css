@@ -65,12 +65,12 @@
     padding: var(--small-spacing);
 }
 
-#demo-canvas {
+.demo-canvas {
     touch-action: none;
     cursor: grab;
 }
 
-body.dragging #demo-canvas {
+body.dragging .demo-canvas {
     cursor: grabbing;
 }
 

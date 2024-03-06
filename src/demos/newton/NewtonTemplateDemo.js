@@ -9,8 +9,8 @@ import { useRef, useCallback, useImperativeHandle, forwardRef } from 'react';
 import { WebGLRenderer, Scene, OrthographicCamera, Vector2,
     ShaderMaterial, PlaneGeometry, GLSL3, Mesh } from 'three';
 
-import Demo from '../../components/demo/Demo';
 import ZoomMenu from '../../components/buttons/ZoomMenu';
+import { CanvasDemo } from '../../components/demos/demos';
 import { ZoomDirection } from '../../components/buttons/ZoomMenu';
 import { Vector, vec2 } from '../../math';
 
@@ -209,11 +209,11 @@ const NewtonTemplateDemo = forwardRef(function NewtonTemplateDemo(props, ref) {
     return (<>
         <title>{props.title} | Zenzicubic</title>
 
-        <Demo title={props.title} canvasRef={canvasRef} onInitialize={initialize} 
+        <CanvasDemo title={props.title} canvasRef={canvasRef} onInitialize={initialize} 
             onResize={handleResize} onInteractionStart={beginDrag} onInteractionMove={onDrag} 
             onInteractionEnd={() => isDragging.current = false}>
                 {props.children}
-        </Demo> 
+        </CanvasDemo> 
         
         <ZoomMenu onZoom={(dir) => { zoomDir.current = dir; }} onReset={resetDisplay} />
     </>);

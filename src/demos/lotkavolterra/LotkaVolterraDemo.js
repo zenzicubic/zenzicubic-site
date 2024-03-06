@@ -7,9 +7,9 @@ import React from 'react';
 import { useRef, useCallback } from 'react';
 import { MathJax } from 'better-react-mathjax';
 
-import Demo from '../../components/demo/Demo';
 import Slider from '../../components/slider/Slider';
 import Accordion from '../../components/accordion/Accordion';
+import { CanvasDemo } from '../../components/demos/demos';
 import { TabGroup, ButtonGroup } from '../../components/groups/groups';
 import { vec2 } from '../../math';
 
@@ -290,7 +290,7 @@ function LotkaVolterraDemo() {
 
     return (<>
         <title>Lotka-Volterra model | Zenzicubic</title>
-        <Demo title="Lotka-Volterra model" canvasRef={canvasRef} onInitialize={initialize} 
+        <CanvasDemo title="Lotka-Volterra model" canvasRef={canvasRef} onInitialize={initialize} 
             onResize={handleResize}>
             <p>This is an interactive simulation of the <a href="https://en.wikipedia.org/wiki/Lotka-Volterra_equations" target="_blank" rel="noopener noreferrer">Lotka-Volterra model</a>, a mathematical model of animal population.</p>
 
@@ -357,7 +357,7 @@ function LotkaVolterraDemo() {
                     <span className="material-icons">replay</span>
                 </button>
             </ButtonGroup>
-        </Demo>
+        </CanvasDemo>
 
         <TabGroup title="Plot:" btnNames={["Time-series", "Phase plane"]} 
             onTabChange={(tab) => viewMode.current = tab }/>

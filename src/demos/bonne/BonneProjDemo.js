@@ -11,9 +11,9 @@ import { useRef, useCallback } from 'react';
 import { WebGLRenderer, Scene, OrthographicCamera, Vector2,
     ShaderMaterial, PlaneGeometry, GLSL3, Mesh, TextureLoader } from 'three';
 
-import Demo from '../../components/demo/Demo';
+import { getRotMatY, getRotMatZ } from '../../threedengine/threedmath';
+import { CanvasDemo } from '../../components/demos/demos';
 import Slider from '../../components/slider/Slider';
-import { getRotMatY, getRotMatZ } from '../../math';
 import worldMap from './earthmap.jpg';
 
 function BonneProjDemo() {
@@ -114,8 +114,8 @@ function BonneProjDemo() {
         let ry = Math.PI * (mouseY - 0.5 * scl.height) / scl.scale;
 
         // Compute matrices
-        let mat = getRotMatY(-ry);
-        mat = mat.mul(getRotMatZ(rx));
+        let mat = getRotMatZ(-rx);
+        mat = mat.mul(getRotMatY(ry));
         uniforms.current.rot.value = mat.vals.flat();
     }, []);
     
@@ -170,7 +170,7 @@ function BonneProjDemo() {
 
     return (<>
         <title>Bonne projection | Zenzicubic</title>
-        <Demo title="Bonne projection" canvasRef={canvasRef} onInitialize={initialize} 
+        <CanvasDemo title="Bonne projection" canvasRef={canvasRef} onInitialize={initialize} 
             onResize={handleResize} onInteractionStart={() => isDragging.current = true }
             onInteractionMove={handleDrag} onInteractionEnd={() => isDragging.current = false }>
                 <p>
@@ -183,7 +183,7 @@ function BonneProjDemo() {
                         phi1.current = val;
                         updateParams();
                     }}/>
-        </Demo> 
+        </CanvasDemo> 
     </>);
 }
 

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { vec2 } from '../../math';
 
 import errorImg from '../../images/mobile_error_bg.png';
-import './demo.css';
+import './demos.css';
 
 /*
 The mobile error window.
@@ -28,11 +28,48 @@ function MobileError() {
 }
 
 /*
-The demo component.
+A basic demo with no canvas.
 */
 
-function Demo(props) {
+export function Demo(props) {
     const [isMenuVisible, setMenuVisibility] = useState(true);
+
+    return (<>
+        <div id="demo-button-container">
+            <button className="icon-button" onClick={() => setMenuVisibility(true)} 
+                title="Show menu">
+                <span className="material-symbols-outlined">menu</span>
+            </button>
+
+            <Link to="/projects">
+                <button className="icon-button" title="Back to projects">
+                    <span className="material-symbols-outlined">arrow_back</span>
+                </button>
+            </Link>
+        </div>
+
+        <div id="demo-pane" className={(isMenuVisible ? "visible" : "")}>
+            <div id="demo-pane-topbar">
+                <h2 id="demo-title">{props.title}</h2>
+                <button id="demo-close-btn" className="icon-button"
+                    onClick={() => setMenuVisibility(false)}>
+                    <span className="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <div id="demo-pane-content">
+                {props.children}
+            </div>
+        </div>
+        <MobileError />
+    </>);
+}
+
+/*
+A simple demo with a canvas and prebuilt mouse functionality.
+*/
+
+export function CanvasDemo(props) {
     const canvasRef = props.canvasRef;
     const {onResize, onInitialize} = props;
 
@@ -119,41 +156,11 @@ function Demo(props) {
     }, [getEvtCoords, onInteractionEnd, canvasRef, props]);
 
     return (<>
-        <div id="demo-button-container">
-            <button className="icon-button" onClick={() => setMenuVisibility(true)} 
-                title="Show menu">
-                <span className="material-symbols-outlined">menu</span>
-            </button>
-
-            <Link to="/projects">
-                <button className="icon-button" title="Back to projects">
-                    <span className="material-symbols-outlined">arrow_back</span>
-                </button>
-            </Link>
-        </div>
-
-        <div id="demo-pane" className={(isMenuVisible ? "visible" : "")}>
-            <div id="demo-pane-topbar">
-                <h2 id="demo-title">{props.title}</h2>
-                <button id="demo-close-btn" className="icon-button"
-                    onClick={() => setMenuVisibility(false)}>
-                    <span className="material-symbols-outlined">close</span>
-                </button>
-            </div>
-            
-            <div id="demo-pane-content">
-                {props.children}
-            </div>
-        </div>
-
-        <canvas id="demo-canvas" ref={canvasRef} 
+        <Demo title={props.title}>{props.children}</Demo>
+        <canvas className="demo-canvas" ref={canvasRef} 
             onMouseDown={onInteractionStart} onTouchStart={onInteractionStart}
             onMouseMove={onInteractionMove} onTouchMove={onInteractionMove}
             onMouseUp={onInteractionEnd} onMouseOut={onInteractionEnd} 
             onTouchEnd={onInteractionEnd} onTouchCancel={onInteractionEnd} />
-
-        <MobileError />
     </>);
 }
-
-export default Demo;

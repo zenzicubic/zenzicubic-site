@@ -7,7 +7,7 @@
 import React from 'react';
 import { useRef,  useState, useCallback } from 'react';
 
-import Demo from '../../components/demo/Demo';
+import { CanvasDemo } from '../../components/demos/demos';
 import { vec2 } from '../../math';
 
 const ptX = 0.51;
@@ -182,13 +182,13 @@ function VivianiThmDemo() {
 
     return (<>
         <title>Viviani&apos;s theorem | Zenzicubic</title>
-        <Demo title="Viviani&apos;s theorem" canvasRef={canvasRef} onInitialize={initialize} 
+        <CanvasDemo title="Viviani&apos;s theorem" canvasRef={canvasRef} onInitialize={initialize} 
             onResize={onResize} onInteractionStart={() => setDragging(true)}
             onInteractionMove={onDrag} onInteractionEnd={() => setDragging(false) }>
                 <p>
                     This is a demonstration of <a href="https://youtu.be/PQbAG1tYpAs" target="_blank" rel="noopener noreferrer">Viviani&apos;s theorem</a>, which states that for any point inside an equilateral triangle, the sum of the lengths of its altitudes is the height of the triangle. Click and drag inside the triangle to move the point.
                 </p>
-        </Demo>    
+        </CanvasDemo>    
     </>);
 }
 
