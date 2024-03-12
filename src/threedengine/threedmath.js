@@ -62,6 +62,9 @@ export class Vec3 {
 
     // Vector negation
     neg() { return this.mul(-1); }
+
+    // Shallow copy
+    clone() { return new Vec3(this.x, this.y, this.z); }
 }
 
 // GLSL-style abbreviated constructor

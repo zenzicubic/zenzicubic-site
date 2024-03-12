@@ -1,5 +1,6 @@
 /**
- * This is the actual wireframe 3D engine, with some accompanying utilities.
+ * This is the 3D engine, which is capable of drawing points and lines.
+ * There are also some accompanying utilities in this file.
  * This code is protected under the MIT license (see the LICENSE file).
  * @author Zenzicubic
  */
@@ -7,7 +8,6 @@
 import { vec3, quatFromVecs, QUAT_IDENTITY } from './threedmath';
 
 // A clip plane class.
-
 class ClipPlane {
     /**
      * Creates a new clip plane.
@@ -25,25 +25,49 @@ class ClipPlane {
     }
 }
 
-// A basic line segment class, possessing color and opacity.
+// This is a generic 3D object class, which the Point and Segment classes inherit.
+class ThreeDObject {
+    /**
+     * Creates a new generic 3D object.
+     * @param {String} col Color.
+     */
+    constructor(col) {
+        this.col = col;
+    }
+}
 
-export class Segment {
+// A basic line segment class, possessing color, opacity, and thickness.
+export class Segment extends ThreeDObject {
     /**
      * Creates a new line segment.
      * @param {Vec3} ptA First point.
      * @param {Vec3} ptB Second point.
      * @param {String} col Color (default is white).
      * @param {Number} opacity Opacity (default is 1).
+     * @param {Number} thickness Thickness (default is 1).
      */
-    constructor(ptA, ptB, col = "white", opacity = 1) {
+    constructor(ptA, ptB, col = "white", opacity = 1, thickness = 1) {
+        super(col);
         this.ptA = ptA;
         this.ptB = ptB;
-        this.col = col;
         this.opacity = opacity;
+        this.thickness = thickness;
     }
 
-    // Get the midpoint of the transformed segment
-    getMidpoint = () => this.tranA.add(this.tranB).mul(0.5);
+    copyPos() {
+        // Copy points to transform buffer
+        this.tranA = this.ptA.clone();
+        this.tranB = this.ptB.clone();
+    }
+
+    transform(tran) {
+        // Transforms the points of the segment
+        this.tranA = tran(this.tranA);
+        this.tranB = tran(this.tranB);
+    }
+
+    // Get the Z-coordinate of the midpoint of the transformed segment to sort
+    getSortCoord = () => (this.tranA.z + this.tranB.z) * 0.5;
 
     clip(pln) {
         // Test which side of the plane each vertex lies in
@@ -73,15 +97,48 @@ export class Segment {
     }
 }
 
-// This is the actual engine. 
+// A basic point class possessing color and radius.
+export class Point extends ThreeDObject {
+    /**
+     * Creates a new point. 
+     * @param {Vec3} pos Point position.
+     * @param {String} col Point color.
+     * @param {Number} rad Point radius.
+     */
+    constructor(pos, col, rad) {
+        super(col);
+        this.pos = pos;
+        this.rad = rad;
+    }
 
+    // Copy the position to the buffer
+    copyPos = () => this.tranPos = this.pos.clone();
+
+    // Transform the point
+    transform = (tran) => this.tranPos = tran(this.tranPos);
+
+    // Get Z-coordinate to sort
+    getSortCoord = () => this.tranPos.z;
+
+    // Clip against a plane
+    clip = (pln) => pln.sameSide(this.tranPos);
+}
+
+// Some constants.
 const epsilon = 1e-2, maxDis = 1000;
 const sclCoeff = 0.7;
 
 const dt = 1.5e-2;
 const camZ = 5;
 
+
+// This is the actual engine. 
 export default class Engine3D {
+    /**
+     * Creates a new 3D engine.
+     * @param {Canvas} canvas Canvas to draw to.
+     * @param {Function} updateFn Function to call every frame (if any).
+     */
     constructor(canvas, updateFn) {
         // Initialize canvas context
         this.canvas = canvas;
@@ -96,7 +153,7 @@ export default class Engine3D {
 
         // Initialize rotation and geometry
         this.rotQuat = QUAT_IDENTITY;
-        this.meshes = [];
+        this.objects = [];
 
         // Animation stuff
         this.updateFn = updateFn;
@@ -276,7 +333,7 @@ export default class Engine3D {
             this.sclInfo.width, this.sclInfo.height);
         
         // Update and redraw
-        if (this.isRunning && this.updateFn) {
+        if (this.updateFn) {
             this.updateFn(this.t);
         }
         this.redrawScene();
@@ -314,45 +371,56 @@ export default class Engine3D {
      * Redraws the scene.
      */
     redrawScene() {
-        // Transform segment geometry
-        let segments = this.meshes.flat();
-        segments = segments.map(seg => {
-            seg.tranA = this.viewTransform(seg.ptA);
-            seg.tranB = this.viewTransform(seg.ptB);
-            return seg;
-        });
+        // Transform scene geometry in view space
+        let geom = this.objects.flat();
+        for (let obj of geom) {
+            obj.copyPos();
+            obj.transform(this.viewTransform.bind(this));
+        }
 
-        // Sort and draw segments
-        segments = segments.sort((a, b) => b.getMidpoint().z - a.getMidpoint().z);
-        for (let seg of segments) {
-            this.drawSegment(seg);
+        // Sort and draw geometry
+        geom = geom.sort((a, b) => b.getSortCoord() - a.getSortCoord());
+        for (let obj of geom) {
+            this.drawObject(obj);
         }
     }
 
     /**
-     * Draws a 3D segment.
-     * @param {Segment} seg Segment to draw. 
+     * Draws a 3D object to the screen.
+     * @param {ThreeDObject} obj Object to draw. 
      */
-    drawSegment(seg) {
+    drawObject(obj) {
         // Clip against front and back of frustum
-        if (!seg.clip(this.clipPlanes[0])) return;
-        if (!seg.clip(this.clipPlanes[1])) return;
+        if (!obj.clip(this.clipPlanes[0])) return;
+        if (!obj.clip(this.clipPlanes[1])) return;
 
         // Apply projective transformation
-        seg.tranA = this.projTransform(seg.tranA);
-        seg.tranB = this.projTransform(seg.tranB);
+        obj.transform(this.projTransform.bind(this));
 
         // Clip against sides of frustum
         for (let i = 2; i < 6; i ++) {
-            if (!seg.clip(this.clipPlanes[i])) return;
+            if (!obj.clip(this.clipPlanes[i])) return;
         }
 
-        // Draw projected segment
-        this.ctx.globalAlpha = seg.opacity;
-        this.ctx.strokeStyle = seg.col;
-        this.ctx.beginPath();
-        this.ctx.moveTo(seg.tranA.x, seg.tranA.y);
-        this.ctx.lineTo(seg.tranB.x, seg.tranB.y);
-        this.ctx.stroke();
+        // Draw projected object
+        if (obj instanceof Segment) {
+            // Object is a segment
+            this.ctx.lineWidth = obj.thickness;
+            this.ctx.globalAlpha = obj.opacity;
+            this.ctx.strokeStyle = obj.col;
+
+            this.ctx.beginPath();
+            this.ctx.moveTo(obj.tranA.x, obj.tranA.y);
+            this.ctx.lineTo(obj.tranB.x, obj.tranB.y);
+            this.ctx.stroke();
+        } else {
+            // Object is a point
+            this.ctx.globalAlpha = 1;
+            this.ctx.fillStyle = obj.col;
+        
+            this.ctx.beginPath();
+            this.ctx.arc(obj.tranPos.x, obj.tranPos.y, obj.rad, 0, 2 * Math.PI);
+            this.ctx.fill();
+        }
     }
 }

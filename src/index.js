@@ -36,6 +36,7 @@ import PedalDemo from './demos/curves/PedalDemo';
 import BonneProjDemo from './demos/bonne/BonneProjDemo';
 import SpirographDemo from './demos/spirograph/SpirographDemo';
 import CliffordTorusDemo from './demos/clifford/CliffordTorusDemo';
+import DandelinDemo from './demos/dandelin/DandelinDemo';
 
 import LotkaVolterraDemo from './demos/lotkavolterra/LotkaVolterraDemo';
 import SpringMassDemo from './demos/springmass/SpringMassDemo';
@@ -100,6 +101,7 @@ function App() {
                         <Route path="/geom/pedalcurves" element={<PedalDemo />} />
                         <Route path="/geom/spirograph" element={<SpirographDemo />} />
                         <Route path="/geom/clifford" element={<CliffordTorusDemo />} />
+                        <Route path="/geom/dandelin" element={<DandelinDemo />} />
 
                         <Route path="/physics/lotkavolterra" element={<LotkaVolterraDemo />} />
                         <Route path="/physics/springmass" element={<SpringMassDemo />} />

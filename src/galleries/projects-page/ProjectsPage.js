@@ -166,6 +166,15 @@ const projects = [
         srcLink: "https://github.com/zenzicubic/zenzicubic-site/tree/main/src/demos/clifford",
         imgUrl: "cliffordtorus.png",
         isExternal: false
+    },
+    {
+        title: "Dandelin spheres",
+        description: <>A demo of the <a href="https://en.wikipedia.org/wiki/Dandelin_spheres" target="_blank" rel="noopener noreferrer">Dandelin spheres</a>, specifically those of a cylinder.</>,
+        shortName: "dandelin",
+        link: "/geom/dandelin",
+        srcLink: "https://github.com/zenzicubic/zenzicubic-site/tree/main/src/demos/dandelin",
+        imgUrl: "dandelin.png",
+        isExternal: false
     }
 ];
 
