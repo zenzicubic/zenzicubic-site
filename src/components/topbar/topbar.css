@@ -74,20 +74,7 @@
     overflow-x: hidden;
 }
 
-#copyright-notice {
-    border-top: var(--border);
-    padding-left: var(--small-spacing);
-}
-
-
 /* Icon styling */
-
-.cc-icon {
-    vertical-align: middle;
-
-    width: var(--cc-icon-size);
-    height: var(--cc-icon-size);
-}
 
 #icon-0 { margin-left: var(--small-spacing); }
 

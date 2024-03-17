@@ -135,6 +135,11 @@ button:hover {
     font-size: 1em;
 }
 
+#root {
+    width: 100vw;
+    height: 100vh;
+}
+
 /*
 Slider.
 */

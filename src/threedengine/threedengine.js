@@ -5,7 +5,8 @@
  * @author Zenzicubic
  */
 
-import { vec3, quatFromVecs, QUAT_IDENTITY } from './threedmath';
+import QuaternionTrackball from './quat_trackball';
+import { vec3 } from './threedmath';
 
 // A clip plane class.
 class ClipPlane {
@@ -140,7 +141,7 @@ export default class Engine3D {
      * @param {Function} updateFn Function to call every frame (if any).
      */
     constructor(canvas, updateFn) {
-        // Initialize canvas context
+        // Initialize canvas context and trackball
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
 
@@ -152,15 +153,15 @@ export default class Engine3D {
         this.isMobile = false;
 
         // Initialize rotation and geometry
-        this.rotQuat = QUAT_IDENTITY;
+        this.trackball = new QuaternionTrackball(this.canvas);
         this.objects = [];
 
         // Animation stuff
         this.updateFn = updateFn;
         this.isRunning = true;
         this.t = 0;
-
-        this.addEvtListeners();
+        
+        window.addEventListener("resize", this.handleResize.bind(this));
         this.handleResize();
         this.startAnimation();
     }
@@ -170,33 +171,8 @@ export default class Engine3D {
      */
     dispose() {
         this.stopAnimation();
-        this.canvas.removeEventListener("mousedown", this.onInteractionStart);
-        this.canvas.removeEventListener("touchstart", this.onInteractionStart);
-        this.canvas.removeEventListener("mousemove", this.onInteractionMove);
-        this.canvas.removeEventListener("touchmove", this.onInteractionMove);
-        
-        this.canvas.removeEventListener("mouseup", this.onInteractionEnd);
-        this.canvas.removeEventListener("mouseout", this.onInteractionEnd);
-        this.canvas.removeEventListener("touchcancel", this.onInteractionEnd);
-        this.canvas.removeEventListener("touchend", this.onInteractionEnd);
+        this.trackball.dispose();
         window.removeEventListener("resize", this.handleResize);
-    }
-
-    /**
-     * Internal function for adding mouse event listeners to the canvas,
-     * and adding a resize listener to the page.
-     */
-    addEvtListeners() {
-        this.canvas.addEventListener("mousedown", this.onInteractionStart.bind(this));
-        this.canvas.addEventListener("touchstart", this.onInteractionStart.bind(this), {passive: true});
-        this.canvas.addEventListener("mousemove", this.onInteractionMove.bind(this));
-        this.canvas.addEventListener("touchmove", this.onInteractionMove.bind(this), {passive: true});
-        
-        this.canvas.addEventListener("mouseup", this.onInteractionEnd.bind(this));
-        this.canvas.addEventListener("mouseout", this.onInteractionEnd.bind(this));
-        this.canvas.addEventListener("touchcancel", this.onInteractionEnd.bind(this));
-        this.canvas.addEventListener("touchend", this.onInteractionEnd.bind(this));
-        window.addEventListener("resize", this.handleResize.bind(this));
     }
 
     /**
@@ -226,8 +202,9 @@ export default class Engine3D {
 
         // Set scale info
         this.sclInfo = {
-            width, height, hW, hH, scale,
+            width, height, hW, hH,
             scaleFac: scale * sclCoeff};
+        this.trackball.setSize(width, height);
 
         // Create clip planes
         this.clipPlanes[2] = new ClipPlane(vec3(1, 0, 0), hW);
@@ -241,72 +218,6 @@ export default class Engine3D {
             this.ctx.translate(hW, hH);
             this.ctx.scale(1, -1);
         }
-    }
-
-    /**
-     * Gets the point to compute the rotation quaternion from a given
-     * mouse or touch event. This is based on the method described in
-     * Robert Eisele's extremely informative article:
-     * https://raw.org/code/trackball-rotation-using-quaternions/.
-     * 
-     * @param {Event} evt Event to process.
-     * @returns Point to compute rotation from.
-     */
-    getRotPoint(evt) {
-        // Get point in canvas space from event
-        if (evt.touches && evt.touches.length > 0) {
-            evt = evt.touches.item(0);
-        }
-
-        let box = this.canvas.getBoundingClientRect();
-        let posX = evt.clientX - box.left;
-        let posY = evt.clientY - box.top;
-
-        // Get the point for the rotation according to Bell's trackball formula
-        let scl = this.sclInfo;
-        posX = (scl.width - 2 * posX) / scl.scale;
-        posY = (2 * posY - scl.height) / scl.scale;
-        let r = posX * posX + posY * posY;
-
-        if (r < .5) {
-            return vec3(posX, posY, Math.sqrt(1 - r));
-        } else {
-            return vec3(posX, posY, .5 / Math.sqrt(r));
-        }
-    }
-
-    /**
-     * Handles a click/drag being started.
-     * @param {Event} evt Event to process.
-     */
-    onInteractionStart(evt) {
-        // Store initial point and quaternion
-        this.isDragging = true;
-        this.startQuat = this.rotQuat.clone();
-        this.startPt = this.getRotPoint(evt);
-        document.body.classList.add("dragging");
-    }
-
-    /**
-     * Updates the rotation quaternion when the user drags
-     * the mouse or moves the touchscreen.
-     * @param {Event} evt Event to process.
-     */
-    onInteractionMove(evt) {
-        if (this.isDragging) {
-            let currPt = this.getRotPoint(evt);
-            let newQuat = quatFromVecs(this.startPt, currPt);
-            this.rotQuat = newQuat.mul(this.startQuat);
-        }
-    }
-
-    /**
-     * Stops dragging when the user releases the mouse
-     * or touchscreen.
-     */
-    onInteractionEnd() {
-        this.isDragging = false;
-        document.body.classList.remove("dragging");
     }
 
     /**
@@ -350,7 +261,7 @@ export default class Engine3D {
      */
     viewTransform(pt) {
         // Applies the viewing transformation in 3D space
-        pt = this.rotQuat.rot(pt);
+        pt = this.trackball.rotQuat.rot(pt);
         pt.z += camZ;
         return pt;
     }

@@ -7,20 +7,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import FrontPageLayout from './FrontPageLayout';
+import FrontPageLayout from './layout/FrontPageLayout';
+import Topbar from '../components/topbar/Topbar';
+
 import bgImg from '../images/404_bg.png';
 
 function ErrorPage() {
     return (
         <>
             <title>404! | Zenzicubic</title>
-            <FrontPageLayout img={bgImg}>
-                <h1>Oh no!</h1>
-                <p>
-                    Unfortunately I couldn't find that page. Check your spelling and try again.<br />
-                    <Link to="/">Click here</Link> to go back to this website&apos;s homepage.
-                </p>
-            </FrontPageLayout>
+            <Topbar>
+                <FrontPageLayout img={bgImg}>
+                    <h1>Oh no!</h1>
+                    <p>
+                        Unfortunately I couldn't find that page. Check your spelling and try again.<br />
+                        <Link to="/">Click here</Link> to go back to this website&apos;s homepage.
+                    </p>
+                </FrontPageLayout>
+            </Topbar>
         </>
     );
 }

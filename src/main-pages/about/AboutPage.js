@@ -7,9 +7,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import FrontPageLayout from '../FrontPageLayout';
-import bgImg from '../../images/front_page_bg.png';
+import FrontPageLayout from '../layout/FrontPageLayout';
+
 import whiteboardImg from '../../images/whiteboard.png';
+import bgImg from '../../images/front_page_bg.png';
 import './about-page.css';
 
 function AboutPage() {

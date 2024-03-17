@@ -11,12 +11,12 @@ import './front-page.css';
 
 function FrontPageLayout(props) {
     return (
-        <>
+        <div className="frontpage-wrapper">
             <div style={{backgroundImage: `url(${props.img}`}} className="frontpage-bg-img" />
             <div className="frontpage-content">
                 {props.children}
             </div>
-        </>
+        </div>
     );
 }
 

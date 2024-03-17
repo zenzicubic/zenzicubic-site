@@ -8,7 +8,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import FrontPageLayout from '../FrontPageLayout';
+import FrontPageLayout from '../layout/FrontPageLayout';
 import bgImg from '../../images/front_page_bg.png';
 import logoImg from '../../images/logo.png';
 import portraitImg from '../../images/portrait.png';
