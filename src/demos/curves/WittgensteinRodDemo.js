@@ -101,7 +101,7 @@ function WittgensteinRodDemo() {
 
                     Consider a point <MathJax inline>{'\\(P\\)'}</MathJax> on some circle <MathJax inline>{'\\(C\\)'}</MathJax> with radius <MathJax inline>{'\\(r\\)'}</MathJax>. Then, mark another arbitrary point <MathJax inline>{'\\(Q\\)'}</MathJax>. Draw ray <MathJax inline>{'\\(PQ\\)'}</MathJax>, and mark point <MathJax inline>{'\\(R\\)'}</MathJax> on ray <MathJax inline>{'\\(PQ\\)'}</MathJax> so that <MathJax inline>{'\\(PR = \\ell\\)'}</MathJax> for some constant <MathJax inline>{'\\(\\ell\\)'}</MathJax>. What is the locus of <MathJax inline>{'\\(R\\)'}</MathJax>?<br /><br />
 
-                    Drag the red point to change <MathJax inline>{'\\(Q\\)'}</MathJax>, and change the values of the sliders. Press <strong>Play/Pause</strong> to play or pause the demo.
+                    Drag the red point to change <MathJax inline>{'\\(Q\\)'}</MathJax>, and change the values of the sliders. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the demo.
                 </p>
                 <hr />
                 <Slider min={0.5} max={2.5} step={1e-2} value={params.current.r} 

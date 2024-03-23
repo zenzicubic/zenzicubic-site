@@ -30,6 +30,14 @@ import ChaosTheoryArticle from './articles/chaos-theory/ChaosTheoryArticle';
 
 /* Demos */
 
+import LotkaVolterraDemo from './demos/lotkavolterra/LotkaVolterraDemo';
+import SpringMassDemo from './demos/springmass/SpringMassDemo';
+import StringWavesDemo from './demos/stringwaves/StringWavesDemo';
+
+import MandelOrbitDemo from './demos/mandelbrotorbits/MandelOrbitDemo';
+import NewtonParamDemo from './demos/newton/newton-params/NewtonParamDemo';
+import NewtonFractalDemo from './demos/newton/newton-fractal/NewtonFractalDemo'; 
+
 import VivianiThmDemo from './demos/viviani/VivianiThmDemo';
 import WittgensteinRodDemo from './demos/curves/WittgensteinRodDemo';
 import PedalDemo from './demos/curves/PedalDemo';
@@ -37,14 +45,7 @@ import BonneProjDemo from './demos/bonne/BonneProjDemo';
 import SpirographDemo from './demos/spirograph/SpirographDemo';
 import CliffordTorusDemo from './demos/clifford/CliffordTorusDemo';
 import DandelinDemo from './demos/dandelin/DandelinDemo';
-
-import LotkaVolterraDemo from './demos/lotkavolterra/LotkaVolterraDemo';
-import SpringMassDemo from './demos/springmass/SpringMassDemo';
-import StringWavesDemo from './demos/stringwaves/StringWavesDemo';
-
-import MandelOrbitDemo from './demos/mandelbrotorbits/MandelOrbitDemo';
-import NewtonParamDemo from './demos/newton/newton-params/NewtonParamDemo';
-import NewtonFractalDemo from './demos/newton/newton-fractal/NewtonFractalDemo';
+import SteinerDemo from './demos/steiner/SteinerDemo';
 
 /*
 Ant Design style info.
@@ -95,6 +96,14 @@ function App() {
                         <Route path="/articles/quadraticformula" element={<QuadraticFormulaArticle />} />
                         <Route path="/articles/chaosexplained" element={<ChaosTheoryArticle />} />
 
+                        <Route path="/physics/lotkavolterra" element={<LotkaVolterraDemo />} />
+                        <Route path="/physics/springmass" element={<SpringMassDemo />} />
+                        <Route path="/physics/stringwaves" element={<StringWavesDemo />} />
+
+                        <Route path="/fractals/mandelorbits" element={<MandelOrbitDemo />} />
+                        <Route path="/fractals/newtonparams" element={<NewtonParamDemo />} />
+                        <Route path="/fractals/newtonfractals" element={<NewtonFractalDemo />} /> 
+
                         <Route path="/geom/bonneproj" element={<BonneProjDemo />} />
                         <Route path="/geom/vivianitheorem" element={<VivianiThmDemo />} />
                         <Route path="/geom/wittgenstein" element={<WittgensteinRodDemo />} />
@@ -102,14 +111,7 @@ function App() {
                         <Route path="/geom/spirograph" element={<SpirographDemo />} />
                         <Route path="/geom/clifford" element={<CliffordTorusDemo />} />
                         <Route path="/geom/dandelin" element={<DandelinDemo />} />
-
-                        <Route path="/physics/lotkavolterra" element={<LotkaVolterraDemo />} />
-                        <Route path="/physics/springmass" element={<SpringMassDemo />} />
-                        <Route path="/physics/stringwaves" element={<StringWavesDemo />} />
-
-                        <Route path="/fractals/mandelorbits" element={<MandelOrbitDemo />} />
-                        <Route path="/fractals/newtonparams" element={<NewtonParamDemo />} />
-                        <Route path="/fractals/newtonfractals" element={<NewtonFractalDemo />} />
+                        <Route path="/geom/steiner" element={<SteinerDemo />} />
                     </Routes>
                 </BrowserRouter>
             </MathJaxContext>

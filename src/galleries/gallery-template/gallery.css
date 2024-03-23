@@ -36,18 +36,6 @@
     background-color: var(--gallery-text-bg);
 }
 
-#copyright-notice {
-    border-top: var(--border);
-    padding-left: var(--small-spacing);
-}
-
-.cc-icon {
-    vertical-align: middle;
-
-    width: var(--cc-icon-size);
-    height: var(--cc-icon-size);
-}
-
 @media screen and (max-width: 500px) {
     :root { --gallery-text-width: 70%; }
 }

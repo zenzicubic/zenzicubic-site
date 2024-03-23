@@ -9,7 +9,7 @@ import { MathJax } from 'better-react-mathjax';
 import { Link } from 'react-router-dom';
 
 import { ArticleLayout, ArticleImage } from '../components/article-components';
-import plantImg from './aeonium.jpg';
+import phiImg from './icosarect.png';
 
 function GoldenRatioArticle() {
     return (<>
@@ -24,11 +24,11 @@ function GoldenRatioArticle() {
                     This sequence has been known since antiquity. Interestingly enough, the limiting ratio between Fibonacci numbers approaches a constant value known as the golden ratio, <MathJax inline>{'\\(\\varphi\\)'}</MathJax>, whose value is 1.618033988749899484820&hellip;<br />
                     Furthermore, no matter what the first two numbers in the sequence are, this limiting ratio will remain the same. This may be proven by rewriting the linear recurrence as a 2x2 matrix and computing its eigenvalues.<br /><br />
                     
-                    The golden ratio is irrational, and goes on and on forever without repeating. It too has been known since ancient times, and was widely considered as sacred in the ancient world. It appears in nature and architecture, namely the pyramids of Giza and the Parthenon. Many plants exhibit the Fibonacci numbers, like this one:</p>
+                    The golden ratio is irrational, and goes on and on forever without repeating. It too has been known since ancient times, and was widely considered as sacred in the ancient world. It appears in nature and architecture, namely the pyramids of Giza and the Parthenon. Many plants exhibit the Fibonacci numbers.</p>
 
                 <ArticleImage 
-                    imgUrl={plantImg} imgAlt="Phyllotaxis in plants" 
-                    imgDesc="An Aeonium plant exhibits the golden ratio."/>
+                    imgUrl={phiImg} imgAlt="Golden rectangles in an icosahedron" 
+                    imgDesc="An icosahedron exhibits the golden ratio."/>
 
                 <p>
                     The golden ratio appears in geometry. Half the golden ratio is the cosine of 36&deg;, and the golden ratio appears in pentagons, pentagrams, dodecahedra, icosahedra, and much, much more. In this article, I will both derive a formula for the exact value of the golden ratio, and explain how I wrote a program that calculated 1,000,000,000 digits of it.
@@ -61,7 +61,7 @@ function GoldenRatioArticle() {
                         \\varphi^2 - \\varphi - 1 = 0
                     \\end{align*}\\)`}</MathJax><br />
 
-                    Solving this using the <Link to="/quadraticformula">quadratic formula</Link>, we obtain two solutions:
+                    Solving this using the <Link to="/articles/quadraticformula">quadratic formula</Link>, we obtain two solutions:
 
                     <MathJax>{`\\(\\begin{align*}
                         \\frac{1 \\pm \\sqrt{5}}{2}
@@ -85,7 +85,7 @@ function GoldenRatioArticle() {
                     </p>
                     <h3 className="subsection-header">The Newton-Raphson Method</h3>
                     <p>
-                        At any given point on some function <MathJax inline>{'\\(f\\)'}</MathJax>&apos;s graph, its tangent line is a good linear approximation to that function around that point. As such, the y-intercept of this tangent line is an approximation to our zero.<br /><br />
+                        At any given point on some function <MathJax inline>{'\\(f\\)'}</MathJax>&apos;s graph, its tangent line is a good linear approximation to that function around that point. As such, the x-intercept of this tangent line is an approximation to our zero.<br /><br />
                         
                         If you&apos;ve taken a Calculus class before, you will know that that slope is equal to the derivative of <MathJax inline>{'\\(f\\)'}</MathJax> at that point, <MathJax inline>{'\\(f^\\prime(x)\\)'}</MathJax>. As such, the equation of the tangent line through some x-coordinate <MathJax inline>{'\\(x_0\\)'}</MathJax> is
                         
@@ -93,7 +93,7 @@ function GoldenRatioArticle() {
                             y - f(x_0) = f^\\prime(x_0)(x - x_0)
                         \\end{align*}\\)`}</MathJax><br />
 
-                        Solving for <MathJax inline>{'\\(x\\)'}</MathJax> furnishes our desired y-intercept:
+                        Solving for <MathJax inline>{'\\(x\\)'}</MathJax> furnishes our desired x-intercept:
 
                         <MathJax>{`\\(\\begin{align*}
                             -f(x_0) &= f^\\prime(x_0)(x - x_0) \\\\
@@ -102,7 +102,7 @@ function GoldenRatioArticle() {
                             \\therefore x &= x_0 - \\frac{f(x_0)}{f^\\prime(x_0)}
                         \\end{align*}\\)`}</MathJax><br />
 
-                        The core idea of the Newton-Raphson method is that we take some initial approximation and compute the y-intercept of the tangent line at this value to produce a (hopefully) better approximation. We take this y-intercept, and repeat the process of finding the tangent line and its y-intercept until the approximation is precise enough for our liking. We can write this as a recurrence relation:
+                        The core idea of the Newton-Raphson method is that we take some initial approximation and compute the x-intercept of the tangent line at this value to produce a (hopefully) better approximation. We take this x-intercept, and repeat the process of finding the tangent line and its x-intercept until the approximation is precise enough for our liking. We can write this as a recurrence relation:
                         
                         <MathJax>{`\\(\\begin{align*}
                             x_{n+1} &= x_n - \\frac{f(x_n)}{f^\\prime(x_n)}

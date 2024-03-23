@@ -1,6 +1,6 @@
 /**
  * This is just a bunch of generic math utilities for use in demos and applets.
- * It has support for 2D vectors, complex numbers, and 3x3 matrices.
+ * It has support for 2D vectors, complex numbers, and some odds and ends.
  * This code is protected under the MIT license (see the LICENSE file).
  * @author Zenzicubic
  */

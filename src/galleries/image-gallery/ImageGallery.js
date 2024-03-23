@@ -19,6 +19,12 @@ Here is the list of images.
 
 const images = [
     {
+        title: "Red-winged Blackbird",
+        description: <>A red-winged blackbird mid-song, showing his characteristic &quot;song spread&quot;. Taken at the Liberty Loop Trail in Wallkill NWR.</>,
+        filename: "blackbird.png",
+        date: "23 Mar 2024"
+    },
+    {
         title: "Abandoned Resort",
         description: <>A picture I took a few weeks ago at the abandoned Unity House resort in the Poconos between PA and NJ.</>,
         filename: "unityhouse.png",

@@ -217,7 +217,7 @@ function PedalDemo() {
 
                 Mark a point <MathJax inline>{'\\(P\\)'}</MathJax> on some curve <MathJax inline>{'\\(\\mathcal{C}\\)'}</MathJax>, and construct the tangent at that point. Mark another point <MathJax inline>{'\\(O\\)'}</MathJax> called the pedal point, and draw the line perpendicular to the tangent through it. The locus of the intersection of those two lines, which we'll call <MathJax inline>{'\\(\\mathcal{I}\\)'}</MathJax>, is the pedal curve of <MathJax inline>{'\\(\\mathcal{C}\\)'}</MathJax>.<br /><br />
 
-                Click and drag the red pedal point, and use the dropdown to choose a curve. Press <strong>Play/Pause</strong> to play or pause the animation.
+                Click and drag the red pedal point, and use the dropdown to choose a curve. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the animation.
             </p>
             <hr />
             <p>Curve:</p>

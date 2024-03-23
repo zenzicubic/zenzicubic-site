@@ -288,7 +288,7 @@ function CliffordTorusDemo() {
             </Accordion>
 
             <Accordion title="How do I use this?">
-                Click and drag to rotate the Clifford torus in 3D. The surface can also be rotated in the YW plane to see its internal structure using the up and down arrow keys or the buttons on the right. To play or pause automatic 4D rotation, press <strong>Play/Pause</strong>. Use the checkbox to choose between orthographic and stereographic projection.
+                Click and drag to rotate the Clifford torus in 3D. The surface can also be rotated in the YW plane to see its internal structure using the up and down arrow keys or the buttons on the right. To play or pause automatic 4D rotation, press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span>. Use the checkbox to choose between orthographic and stereographic projection.
             </Accordion>
             <hr />
 

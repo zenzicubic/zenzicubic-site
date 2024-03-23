@@ -175,6 +175,15 @@ const projects = [
         srcLink: "https://github.com/zenzicubic/zenzicubic-site/tree/main/src/demos/dandelin",
         imgUrl: "dandelin.png",
         isExternal: false
+    },
+    {
+        title: "Steiner chains",
+        description: <>A demo of <a href="https://en.wikipedia.org/wiki/Steiner_chain" target="_blank" rel="noopener noreferrer">Steiner chains</a> and M&ouml;bius transformations.</>,
+        shortName: "steiner",
+        link: "/geom/steiner",
+        srcLink: "https://github.com/zenzicubic/zenzicubic-site/tree/main/src/demos/steiner",
+        imgUrl: "steiner.png",
+        isExternal: false
     }
 ];
 

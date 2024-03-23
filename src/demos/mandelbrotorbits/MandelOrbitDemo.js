@@ -183,7 +183,7 @@ function MandelOrbitDemo() {
         <CanvasDemo title="Mandelbrot orbits" canvasRef={canvasRef} onInitialize={initialize} 
             onResize={resize} onInteractionStart={() => isDragging.current = true }
             onInteractionMove={handleMove} onInteractionEnd={() => isDragging.current = false }>
-                <p>This is a visualization of the internal orbits of the Mandelbrot set. I have more info <Link to="/mandelbrotexplained">here</Link>. Click and drag, and a path will emerge.</p>
+                <p>This is a visualization of the internal orbits of the Mandelbrot set. I have more info <Link to="/articles/mandelbrotexplained">here</Link>. Click and drag, and a path will emerge.</p>
                 <hr />
                 <Checkbox name="doLines" isChecked={doLines.current} label="Show lines" onChange={(checked) => {
                     doLines.current = checked;

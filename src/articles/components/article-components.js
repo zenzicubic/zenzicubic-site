@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+import CopyrightNotice from '../../components/copyright-notice/CopyrightNotice';
 import Topbar from '../../components/topbar/Topbar';
 import './article-components.css';
 
@@ -26,6 +27,7 @@ function ArticleLayout(props) {
         <div id="article-content">
             {props.children}
         </div>
+        <CopyrightNotice />
     </Topbar>);
 }
 
