@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons');
+
+
+/*
+Color theme.
+*/
+
+:root {
+    --dark-col-1: #121212;
+    --dark-col-2: #282828;
+    --dark-col-3: #3f3f3f;
+    --dark-col-4: #575757;
+
+    --elt-col-1: #4d6cfa;
+    --elt-col-2: #6a7bfb;
+    --elt-col-3: #818afc;
+    --elt-col-4: #969afd;
+
+    --light-col-1: #fff;
+    --light-col-2: #dedede;
+    --light-col-3: #c2c2c2;
+}
+
+/*
+Constants.
+*/
+
+:root {
+    /* General */
+    --scr-shadow: inset 0 0 3px var(--dark-col-1);
+    --scr-width: 10px;
+    --blur-filter: blur(1.5px);
+    --transition-duration: 0.3s;
+    --small-spacing: 6px;
+    --border-radius: 3px;
+
+    /* Border */
+    --thick-border: 3px;
+    --border-width: 1px;
+    --border: var(--border-width) solid var(--light-col-1);
+
+    /* Text */
+    --font-family: 'Source Code Pro', monospace, sans-serif;
+    --large-font-size: 1.25em;
+
+    /* Slider */
+    --slider-height: 3px;
+    --handle-size: 15px;
+
+    /* Buttons */
+    --btn-font-size: 1.1em;
+    --icon-btn-size: 2em;
+    --btn-padding: 10px 20px;
+}
+
+/*
+Styles for basic elements.
+*/
+
+body {
+    overflow: hidden;
+    
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--dark-col-1);
+}
+
+body.dragging {
+    user-select: none;
+}
+
+p, h1, h2, h3, h4, h5, li, span, label {
+    color: var(--light-col-1);
+}
+
+a {
+    color: var(--elt-col-2);
+    transition: color var(--transition-duration);
+}
+
+a:hover { 
+    color: var(--elt-col-4); 
+}
+
+hr {
+    width: 100%;
+    border: var(--border);
+    margin-top: var(--small-spacing);
+    margin-bottom: var(--small-spacing);
+}
+
+button {
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    
+    color: var(--light-col-1);
+    padding: var(--btn-padding);
+    font-family: var(--font-family);
+    font-size: var(--btn-font-size);
+    background-color: var(--elt-col-1);
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-duration);
+}
+
+button:hover { 
+    background-color: var(--elt-col-3); 
+}
+
+.icon-button {
+    user-select: none;
+    
+    border: var(--border);
+    padding: var(--button-size);
+    width: var(--icon-btn-size);
+    height: var(--icon-btn-size);
+    background-color: var(--dark-col-2);
+    transition: background-color var(--transition-duration);
+}
+
+.icon-button:hover { 
+    background-color: var(--elt-col-3) !important; 
+}
+
+.icon-button > span {
+    vertical-align: baseline;
+}
+
+.material-icons {
+    user-select: none;
+	vertical-align: middle;
+    
+    color: var(--light-col-1);
+    font-size: var(--btn-font-size);
+}
+
+.material-icons.small {
+    font-size: 1em;
+}
+
+#root {
+    width: 100vw;
+    height: 100vh;
+}
+
+/*
+Slider.
+*/
+
+input[type=range] {
+    appearance: none;
+    
+    height: var(--slider-height);
+    background-color: var(--light-col-2);
+    transition: background-color var(--transition-duration);
+}
+
+input[type=range]:hover {
+    background-color: var(--light-col-1);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    appearance: none;
+    cursor: pointer;
+
+    border-radius: 50%;
+    width: var(--handle-size);
+    height: var(--handle-size);
+    background-color: var(--elt-col-1);
+    transition: background-color var(--transition-duration);
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    background-color: var(--elt-col-3);
+}
+
+/*
+Scrollbar.
+*/
+
+::-webkit-scrollbar { 
+    width: var(--scr-width); 
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--light-col-1);
+    box-shadow: var(--scr-shadow); 
+    border-radius: var(--scr-width);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--elt-col-1); 
+    border-radius: var(--scr-width);
+}
+
+::-webkit-scrollbar-thumb:hover { 
+    background: var(--elt-col-3); 
+}
+
+/* Hide on mobile or touch devices */
+@media screen and (pointer: coarse) {
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+/*
+Styles for Ant Design components.
+*/
+
+.ant-select {
+    width: 100%;
+    margin-bottom: var(--small-spacing);
+}
+
+.ant-select-selection-item {
+    /* This sets the font size to be the same as the page */
+    font-size: 1rem;
+}
+
+.rc-virtual-list > ::-webkit-scrollbar-track {
+    background-color: transparent;
+    box-shadow: none;
+}

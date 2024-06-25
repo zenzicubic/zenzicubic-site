@@ -1,0 +1,19 @@
+:root {
+    --loader-size: 5em;
+    --loader-duration: 0.8s;
+    --loader-thickness: 0.7em;
+}
+
+.loader {
+    border-radius: 50%;
+    width: var(--loader-size);
+    height: var(--loader-size);
+    border: var(--loader-thickness) solid var(--light-col-3);
+    border-top: var(--loader-thickness) solid var(--elt-col-1);
+    animation: loader-spin var(--loader-duration) ease-in-out infinite;
+}
+
+@keyframes loader-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

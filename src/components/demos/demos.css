@@ -1,0 +1,114 @@
+:root {
+    --button-size: 7px;
+    --error-msg-width: 70vw;
+    --menu-width: 35vw;
+    --menu-min-width: 300px;
+    --menu-height: 60vh;
+    --mobile-error-bg: rgba(18, 18, 18, 0.7);
+}
+
+#demo-button-container, #demo-pane {
+    position: absolute;
+    display: flex;
+
+    top: 0;
+    right: 0;
+    margin: var(--small-spacing);
+    column-gap: var(--small-spacing);
+}
+
+#demo-pane {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    visibility: hidden;
+
+    border: var(--border);
+    width: var(--menu-width);
+    min-width: var(--menu-min-width);
+    max-height: var(--menu-height);
+    border-radius: var(--border-radius);
+    background-color: var(--dark-col-2);
+    transform: translateX(100%);
+    transition: var(--transition-duration);
+}
+
+#demo-pane.visible {
+    visibility: visible;
+
+    transform: translateX(0%);
+}
+
+#demo-pane-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: var(--border);
+    padding: var(--small-spacing);
+    background-color: var(--dark-col-3);
+}
+
+#demo-title {
+    margin: 0; 
+}
+
+#demo-close-btn {
+    background-color: var(--dark-col-4);
+}
+
+#demo-pane-content {
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    padding-top: 0px;
+    padding: var(--small-spacing);
+}
+
+.demo-canvas {
+    touch-action: none;
+    cursor: grab;
+}
+
+body.dragging .demo-canvas {
+    cursor: grabbing;
+}
+
+/* Mobile error */
+
+#mobile-error-bg {
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: none;
+
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5000;
+}
+
+#mobile-error-msg {
+    margin: auto;
+    position: absolute;
+    text-align: center;
+    height: fit-content;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: var(--border);
+    width: var(--error-msg-width);
+    border-radius: var(--border-radius);
+    backdrop-filter: var(--blur-filter);
+    background-color: var(--mobile-error-bg);
+}
+
+@media screen and (max-width: 767px) {
+    #mobile-error-bg {
+        display: block;
+    }
+}
