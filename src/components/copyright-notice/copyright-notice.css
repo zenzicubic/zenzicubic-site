@@ -1,0 +1,11 @@
+.copyright-notice {
+    border-top: var(--border);
+    padding-left: var(--small-spacing);
+}
+
+.cc-icon {
+    vertical-align: middle;
+
+    width: var(--cc-icon-size);
+    height: var(--cc-icon-size);
+}

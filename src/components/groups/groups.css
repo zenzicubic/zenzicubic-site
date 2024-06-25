@@ -1,0 +1,46 @@
+.button-group {
+    text-align: center;
+}
+
+.button-group > button {
+    border-radius: 0px;
+}
+
+.button-group > button:first-child {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+}
+
+.button-group > button:last-child {
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.tab-group {
+    position: absolute;
+    
+    right: 0;
+    bottom: 0;
+    border: var(--border);
+    margin: var(--small-spacing);
+    background-color: var(--dark-col-2);
+    border-radius: var(--border-radius);
+}
+
+.tab-group > span {
+    padding: var(--small-spacing);
+}
+
+.tab-group > button {
+    border-radius: 0;
+    border-left: var(--border);
+    background-color: var(--dark-col-2);
+}
+
+.tab-group > button.selected {
+    background-color: var(--elt-col-1);
+}
+
+.tab-group > button:hover:not(.selected) {
+    background-color: var(--elt-col-3);
+}

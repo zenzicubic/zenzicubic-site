@@ -1,0 +1,30 @@
+:root {
+    --max-panel-height: 40%;
+    --applet-height: 90vh;
+}
+
+#attractor-viz-parent {
+    display: flex;
+    flex-direction: column-reverse;
+
+    width: 100%;
+    border: var(--border);
+    height: var(--applet-height);
+    border-radius: var(--border-radius);
+}
+
+#attractor-viz-container {
+    overflow: hidden;
+    
+    flex-grow: 1;
+}
+
+#attractor-param-container {
+    display: flex;
+    flex-direction: column;
+
+    border-bottom: var(--border);
+    padding: var(--small-spacing);
+    background-color: var(--dark-col-2);
+    max-height: var(--max-panel-height);
+}

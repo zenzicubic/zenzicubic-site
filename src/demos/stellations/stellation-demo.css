@@ -1,0 +1,7 @@
+#interstitial-img {
+    width: 100%;
+    border: var(--border);
+    margin-top: var(--small-spacing);
+    margin-bottom: var(--small-spacing);
+    border-radius: var(--border-radius);
+}

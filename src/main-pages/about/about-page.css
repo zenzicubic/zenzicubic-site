@@ -1,0 +1,20 @@
+:root {
+    --about-pg-img-sm-size: 60%;
+    --about-pg-img-lg-size: 100%;
+}
+
+#about-page-header-img {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    border: var(--border);
+    width: var(--about-pg-img-sm-size);
+    border-radius: var(--border-radius);
+}
+
+@media screen and (max-width: 600px) {
+    #about-page-header-img { 
+        width: var(--about-pg-img-lg-size); 
+    }
+}
