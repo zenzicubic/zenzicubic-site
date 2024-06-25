@@ -1,0 +1,32 @@
+:root {
+    --slider-lbl-padding: 4px 6px;
+    --slider-lbl-width: 4em;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    padding-bottom: var(--small-spacing);
+}
+
+.slider-label {
+    color: var(--light-col-1);
+}
+
+.slider {
+    flex-grow: 1;
+    margin-right: var(--small-spacing);
+}
+
+.slider-value {
+    text-align: center;
+
+    border: var(--border);
+    color: var(--light-col-1);
+    width: var(--slider-lbl-width);
+    padding: var(--slider-lbl-padding);
+    border-radius: var(--border-radius);
+    background-color: var(--dark-col-3);
+}

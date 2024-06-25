@@ -1,0 +1,15 @@
+:root {
+    --sel-gear-thickness: 2px;
+}
+
+.spirograph-gear {
+    padding: 0px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 var(--border-width) var(--light-col-1);
+
+    transition: all var(--transition-duration) ease-out;
+}
+
+.spirograph-gear.selected {
+    box-shadow: inset 0 0 0 var(--thick-border) var(--light-col-1);
+}

@@ -1,0 +1,21 @@
+:root {
+    --numeric-input-width: 3em;
+}
+
+.numeric-input {
+    text-align: center;
+
+    font-size: 1em;
+    font-family: var(--font-family);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    color: var(--light-col-1);
+    width: var(--numeric-input-width);
+    background-color: var(--dark-col-3);
+    transition: border-color var(--transition-duration);
+}
+
+.numeric-input:focus {
+    outline: 0px;
+    border-color: var(--elt-col-3);
+}

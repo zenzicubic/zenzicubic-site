@@ -1,0 +1,11 @@
+.button-menu {
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+    margin: var(--small-spacing);
+}
+
+.button-menu > .icon-button:not(:last-child) {
+    margin-right: var(--small-spacing);
+}

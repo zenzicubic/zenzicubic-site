@@ -1,0 +1,55 @@
+:root {
+    --color-container-size: 1.25em;
+    --color-button-padding: 2px;
+    --num-col-columns: 7;
+    --swatch-size: 2em;
+    --initial-opacity: .6;
+}
+
+.color-select-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.color-select-container > span {
+    margin-right: var(--small-spacing);
+}
+
+.picker-color-select-btn {
+    aspect-ratio: 1;
+    border: var(--border);
+    background-color: var(--dark-col-3);
+    padding: var(--color-button-padding);
+}
+
+.picker-color-container {
+    border-radius: var(--border-radius);
+    width: var(--color-container-size);
+    height: var(--color-container-size);
+}
+
+.picker-color-swatch-container {
+    display: grid;
+
+    grid-gap: var(--small-spacing);
+    grid-template-columns: repeat(var(--num-col-columns), 1fr);
+}
+
+.picker-color-swatch {
+    padding: 0;
+    aspect-ratio: 1;
+    width: var(--swatch-size);
+    opacity: var(--initial-opacity);
+    box-shadow: inset 0 0 0 var(--border-width) var(--light-col-1);
+
+    transition: all var(--transition-duration) ease-out;
+}
+
+.picker-color-swatch:hover {
+    opacity: 1;
+}
+
+.picker-color-swatch.selected {
+    box-shadow: inset 0 0 0 var(--thick-border) var(--light-col-1);
+}
