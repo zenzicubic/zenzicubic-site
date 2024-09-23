@@ -25,6 +25,13 @@ const categories = ["Birds and nature", "Mathematical visualization", "Other"]
 
 const images = [
     {
+        title: "Kummer Surface",
+        description: <>A rendering of <a href="https://en.wikipedia.org/wiki/Kummer_surface" target="_blank" rel="noopener noreferrer">Kummer&apos;s quartic surface</a>, a nodal surface with 16 double points.</>,
+        filename: "kummer.png",
+        date: "23 Sep 2024",
+        category: 1
+    },
+    {
         title: "Vermillion Flycatcher",
         description: "A vermillion flycatcher, photographed during a vacation to the Quindio region of Colombia.",
         filename: "vermillionflycatcher.png",
