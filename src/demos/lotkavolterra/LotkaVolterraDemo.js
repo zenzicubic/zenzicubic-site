@@ -294,23 +294,25 @@ function LotkaVolterraDemo() {
             onResize={handleResize}>
             <p>This is an interactive simulation of the <a href="https://en.wikipedia.org/wiki/Lotka-Volterra_equations" target="_blank" rel="noopener noreferrer">Lotka-Volterra model</a>, a mathematical model of animal population.</p>
 
-            <Accordion title="What is this?">
-                More technically, the Lotka-Volterra model is a system of two coupled nonlinear first-order ODEs designed to describe the dynamics of a simple ecosystem with two species: predators (for example foxes) and prey (for example rabbits). They take the form:
+            <Accordion sections={[
+                {title: "What is this?", content: <p>
+                    Speaking technically, the Lotka-Volterra model is a system of two coupled nonlinear first-order ODEs designed to describe the dynamics of a simple ecosystem with two species: predators (for example foxes) and prey (for example rabbits). They take the form:
 
-                <MathJax>{`\\( \\begin{align*} 
-                    \\dot{x} &= \\alpha x - \\beta x y \\\\
-                    \\dot{y} &= \\gamma x y - \\delta y
-                \\end{align*} \\)`}</MathJax>
+                    <MathJax>{`\\( \\begin{align*} 
+                        \\dot{x} &= \\alpha x - \\beta x y \\\\
+                        \\dot{y} &= \\gamma x y - \\delta y
+                    \\end{align*} \\)`}</MathJax>
 
-                In these equations, <MathJax inline>{'\\(x\\)'}</MathJax> represents the relative population of prey and <MathJax inline>{'\\(y\\)'}</MathJax> represents the relative population of predators.<br /><br />
+                    In these equations, <MathJax inline>{'\\(x\\)'}</MathJax> represents the relative population of prey and <MathJax inline>{'\\(y\\)'}</MathJax> represents the relative population of predators.<br /><br />
 
-                As for the coefficients, <MathJax inline>{'\\(\\alpha\\)'}</MathJax> represents prey population growth rate, <MathJax inline>{'\\(\\beta\\)'}</MathJax> represents prey predation rate, <MathJax inline>{'\\(\\gamma\\)'}</MathJax> represents predator population growth relative to prey predation, and <MathJax inline>{'\\(\\delta\\)'}</MathJax> represents predator death rate. The equations are integrated using Runge-Kutta 4 (RK4) integration.
-            </Accordion>
-            <Accordion title="How do I use this?">
-                This program has two views of the system: a view in the <MathJax inline>{'\\(x - y\\)'}</MathJax> phase plane and a view of the time-series plots of the two variables. In the time-series plot, relative prey population is the red curve, and relative predator population is the blue curve.<br /><br />
+                    As for the coefficients, <MathJax inline>{'\\(\\alpha\\)'}</MathJax> represents prey population growth rate, <MathJax inline>{'\\(\\beta\\)'}</MathJax> represents prey predation rate, <MathJax inline>{'\\(\\gamma\\)'}</MathJax> represents predator population growth relative to prey predation, and <MathJax inline>{'\\(\\delta\\)'}</MathJax> represents predator death rate. The equations are integrated using Runge-Kutta 4 (RK4) integration.
+                                    </p>},
+                {title: "How do I use this?", content: <p>
+                    This program has two views of the system: a view in the <MathJax inline>{'\\(x - y\\)'}</MathJax> phase plane and a view of the time-series plots of the two variables. In the time-series plot, relative prey population is the red curve, and relative predator population is the blue curve.<br /><br />
                 
-                Use the menu on the bottom right to switch between them. Use the sliders to adjust the initial conditions and coefficients (see above for their meaning). Elapsed time is in the upper left-hand corner. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the simulation, and <span className="material-icons small">replay</span> to reset the simulation.
-            </Accordion>
+                    Use the menu on the bottom right to switch between them. Use the sliders to adjust the initial conditions and coefficients (see above for their meaning). Elapsed time is in the upper left-hand corner. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the simulation, and <span className="material-icons small">replay</span> to reset the simulation.
+                </p>}
+            ]} />
             <hr />
 
             <h3>Relative initial populations</h3>

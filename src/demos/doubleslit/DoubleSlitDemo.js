@@ -247,22 +247,24 @@ function DoubleSlitDemo() {
             onResize={handleResize}>
             <p>This demo allows you to experiment with the interference patterns created by the <a href="https://en.wikipedia.org/wiki/Double-slit_experiment" target="_blank" rel="noopener noreferrer">double-slit experiment</a>.</p>
 
-            <Accordion title="What is this?">
-                In the double-slit experiment, light illuminates on a plate with two parallel slits, with a screen placed behind it. One might expect the pattern of light that results to be two solid bands, but the pattern that is observed is a complicated series of alternating bright and dark bands. This is due to the fact that light behaves as a wave, and this experiment was pivotal in establishing the wave-particle duality of light. Electrons can also exhibit this behavior.<br /><br />
+            <Accordion sections={[
+                {title: "What is this?", content: <p>
+                    In the double-slit experiment, light illuminates on a plate with two parallel slits, with a screen placed behind it. One might expect the pattern of light that results to be two solid bands, but the pattern that is observed is a complicated series of alternating bright and dark bands. This is due to the fact that light behaves as a wave, and this experiment was pivotal in establishing the wave-particle duality of light. Electrons can also exhibit this behavior.<br /><br />
 
-                This is a 2D model of this apparatus. The movement of light is simulated using a damped version of the classical <a href="https://en.wikipedia.org/wiki/Wave_equation" target="_blank" rel="noopener noreferrer">wave equation</a>:<br />
-                <MathJax>{`\\(\\begin{align*} 
-                    \\frac{\\partial^2 \\Psi}{\\partial t^2} = 
-                    \\nabla^2 \\Psi - 
-                    \\mu \\frac{\\partial \\Psi}{\\partial t}
-                \\end{align*}\\)`}</MathJax>
-                where the constant <MathJax inline>{'\\(\\mu\\)'}</MathJax> represents dissipation. The function <MathJax inline>{'\\(\\Psi(\\mathbf{x}, t)\\)'}</MathJax> represents light intensity at a particular position and time.<br /><br />
+                    This is a 2D model of this apparatus. The movement of light is simulated using a damped version of the classical <a href="https://en.wikipedia.org/wiki/Wave_equation" target="_blank" rel="noopener noreferrer">wave equation</a>:<br />
+                    <MathJax>{`\\(\\begin{align*} 
+                        \\frac{\\partial^2 \\Psi}{\\partial t^2} = 
+                        \\nabla^2 \\Psi - 
+                        \\mu \\frac{\\partial \\Psi}{\\partial t}
+                    \\end{align*}\\)`}</MathJax>
+                    where the constant <MathJax inline>{'\\(\\mu\\)'}</MathJax> represents dissipation. The function <MathJax inline>{'\\(\\Psi(\\mathbf{x}, t)\\)'}</MathJax> represents light intensity at a particular position and time.<br /><br />
 
-                In reality, light obeys a slightly different form of this equation, but it is a fairly good approximation. The equation is numerically integrated using Verlet integration here with Dirichlet boundary conditions.
-            </Accordion>
-            <Accordion title="How do I use this?">
-                Use the sliders to change the damping of the wave equation, the frequency of the emitter, and the width and offset of the slits in the barrier. Use the <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> button to play or pause the demo, and the <span className="material-icons small">replay</span> button to reset.
-            </Accordion>
+                    In reality, light obeys a slightly different form of this equation, but it is a fairly good approximation. The equation is numerically integrated using Verlet integration here with Dirichlet boundary conditions.
+                </p>},
+                {title: "How do I use this?", content: <p>
+                    Use the sliders to change the damping of the wave equation, the frequency of the emitter, and the width and offset of the slits in the barrier. Use the <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> button to play or pause the demo, and the <span className="material-icons small">replay</span> button to reset.
+                </p>}
+            ]} />
             <hr />
 
             <h3>Wave parameters</h3>

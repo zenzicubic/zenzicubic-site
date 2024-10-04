@@ -12,10 +12,10 @@ Color theme.
     --dark-col-3: #3f3f3f;
     --dark-col-4: #575757;
 
-    --elt-col-1: #4d6cfa;
-    --elt-col-2: #6a7bfb;
-    --elt-col-3: #818afc;
-    --elt-col-4: #969afd;
+    --elt-col-1: #3b429f;
+    --elt-col-2: #6b68b5;
+    --elt-col-3: #9691ca;
+    --elt-col-4: #ada8d6;
 
     --light-col-1: #fff;
     --light-col-2: #dedede;
@@ -75,7 +75,7 @@ p, h1, h2, h3, h4, h5, li, span, label {
 }
 
 a {
-    color: var(--elt-col-2);
+    color: var(--elt-col-3);
     transition: color var(--transition-duration);
 }
 
@@ -106,7 +106,7 @@ button {
 }
 
 button:hover { 
-    background-color: var(--elt-col-3); 
+    background-color: var(--elt-col-2); 
 }
 
 .icon-button {

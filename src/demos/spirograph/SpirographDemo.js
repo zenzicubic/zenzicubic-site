@@ -8,7 +8,7 @@ import { useRef, useState, useCallback } from 'react';
 
 import Accordion from '../../components/accordion/Accordion';
 import ColorPicker from '../../components/colorpicker/ColorPicker';
-import Checkbox from '../../components/checkbox/Checkbox';
+import Toggle from '../../components/toggle/Toggle';
 
 import { CanvasDemo } from '../../components/demos/demos';
 import { colors } from '../../components/colorpicker/ColorPicker';
@@ -299,11 +299,13 @@ function SpirographDemo() {
             onInteractionEnd={() => isDragging.current = false}>
             <p>This is a web version of the Spirograph, the classic children&apos;s toy. You can choose different &quot;gears&quot; and colors to make your own designs. In technical terms, both this demo and the toy draw <a href="https://en.wikipedia.org/wiki/Hypotrochoid" target="_blank" rel="noopener noreferrer">hypotrochoids</a>.</p>
 
-            <Accordion title="How do I use this?">
-                Select a gear from the list, and use the color picker to choose the color of the curve being drawn. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the animation, and <span className="material-icons small">delete</span> to clear the canvas. Press <span className="material-icons small">save</span> to save your creation. If the animation is paused, you can change the position of the trace point by clicking and dragging the white circle. Use the checkbox to show or hide the gears.
-            </Accordion>
-
+            <Accordion sections={[
+                {title: "How do I use this?", content: <p>
+                    Select a gear from the list, and use the color picker to choose the color of the curve being drawn. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the animation, and <span className="material-icons small">delete</span> to clear the canvas. Press <span className="material-icons small">save</span> to save your creation. If the animation is paused, you can change the position of the trace point by clicking and dragging the white circle. Use the toggle to show or hide the gears.
+                </p>}
+            ]} />
             <hr />
+            
             <ButtonGroup>
                 <button onClick={setPlayState}>
                     <span className="material-icons" ref={iconRef}>play_arrow</span>
@@ -343,8 +345,8 @@ function SpirographDemo() {
             </div>
 
             <hr />
-            <Checkbox label="Show gears" name="doGears" isChecked={doGears.current} onChange={(checked) => {
-                doGears.current = checked;
+            <Toggle label="Show gears" name="doGears" isToggled={doGears.current} onChange={(toggled) => {
+                doGears.current = toggled;
             }}/>
         </CanvasDemo>
     </>);

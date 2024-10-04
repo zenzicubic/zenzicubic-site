@@ -14,7 +14,7 @@ import { Vector3, WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight,
 import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-import Checkbox from '../../components/checkbox/Checkbox';
+import Toggle from '../../components/toggle/Toggle';
 import Accordion from '../../components/accordion/Accordion';
 import '../../components/buttons/button-menu.css';
 import PressableIcon from '../../components/buttons/PressableIcon';
@@ -277,23 +277,24 @@ function CliffordTorusDemo() {
         <CanvasDemo title="Clifford torus" canvasRef={canvasRef} onInitialize={initialize} onResize={handleResize}>
             <p>This is an interactive visualization of the <a href="https://en.wikipedia.org/wiki/Clifford_torus" target="_blank" rel="noopener noreferrer">Clifford torus</a>, a 4-dimensional analogue of the familiar 3-dimensional torus.</p>
 
-            <Accordion title="What is this?">
-                The Clifford torus is the Cartesian product of two circles, meaning that the Clifford torus is composed of all pairs of complex numbers of unit magnitude, and can be parameterized as such:
-                <MathJax>{`\\(
-                    T = \\left\\{ (e^{i \\theta}, e^{i \\varphi}) \\ | \\ 0 \\leq 
-                    \\theta \\lt 2 \\pi, 0 \\leq \\varphi \\lt 2 \\pi \\right\\}
-                \\)`}</MathJax><br />
+            <Accordion sections={[
+                {title: "What is this?", content: <p>
+                    The Clifford torus is the Cartesian product of two circles, meaning that the Clifford torus is composed of all pairs of complex numbers of unit magnitude, and can be parameterized as such:
+                    <MathJax>{`\\(
+                        T = \\left\\{ (e^{i \\theta}, e^{i \\varphi}) \\ | \\ 0 \\leq 
+                        \\theta \\lt 2 \\pi, 0 \\leq \\varphi \\lt 2 \\pi \\right\\}
+                    \\)`}</MathJax><br />
 
-                For this visualization, I&apos;ve rescaled it by a factor of <MathJax inline>{'\\(\\frac{1}{\\sqrt{2}}\\)'}</MathJax> so that it lies on the unit 3-sphere. This demo supports two projections: stereographic and orthographic. The orthographic projections of the Clifford torus are self-intersecting surfaces called <a href="https://mathcurve.com/surfaces.gb/boheme/boheme.shtml" target="_blank" rel="noopener noreferrer">Bohemian domes</a>.
-            </Accordion>
-
-            <Accordion title="How do I use this?">
-                Click and drag to rotate the Clifford torus in 3D. The surface can also be rotated in the YW plane to see its internal structure using the up and down arrow keys or the buttons on the right. To play or pause automatic 4D rotation, press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span>. Use the checkbox to choose between orthographic and stereographic projection.
-            </Accordion>
+                    For this visualization, I&apos;ve rescaled it by a factor of <MathJax inline>{'\\(\\frac{1}{\\sqrt{2}}\\)'}</MathJax> so that it lies on the unit 3-sphere. This demo supports two projections: stereographic and orthographic. The orthographic projections of the Clifford torus are self-intersecting surfaces called <a href="https://mathcurve.com/surfaces.gb/boheme/boheme.shtml" target="_blank" rel="noopener noreferrer">Bohemian domes</a>.
+                </p>},
+                {title: "How do I use this?", content: <p>
+                    Click and drag to rotate the Clifford torus in 3D. The surface can also be rotated in the YW plane to see its internal structure using the up and down arrow keys or the buttons on the right. To play or pause automatic 4D rotation, press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span>. Use the toggle to choose between orthographic and stereographic projection.
+                </p>}
+            ]} />
             <hr />
 
-            <Checkbox label="Use orthographic projection" isChecked={doOrtho.current} name="doOrtho" onChange={(val) => {
-                doOrtho.current = val;
+            <Toggle label="Orthographic projection" isToggled={doOrtho.current} name="doOrtho" onChange={(toggled) => {
+                doOrtho.current = toggled;
             }} />
             <button onClick={handleRotPause}>
                 <span className="material-icons" ref={iconRef}>pause</span>

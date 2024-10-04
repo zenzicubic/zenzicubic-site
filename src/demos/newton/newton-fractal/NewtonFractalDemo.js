@@ -59,26 +59,26 @@ function NewtonFractalDemo() {
                 This is an interactive visualization of <a href="https://en.wikipedia.org/wiki/Newton_fractal" target="_blank" rel="noopener noreferrer">generalized Newton fractals</a> for arbitrary polynomials of degree 10 or less with real coefficients. See the dropdowns for more.
             </p>
 
-            <Accordion title="What are Newton fractals?">
-                Newton&apos;s method is a method to find the zeros of a function <MathJax inline>{'\\(f(x)\\)'}</MathJax>. It entails iterating the map:
+            <Accordion sections={[
+                {title: "What are Newton fractals?", content: <p>
+                    Newton&apos;s method is a method to find the zeros of a function <MathJax inline>{'\\(f(x)\\)'}</MathJax>. It entails iterating the map:
 
-                <MathJax>{`\\(\\begin{align*}
-                    x_{n+1}=x_n-\\frac{f(x_n)}{f^\\prime(x_n)}
-                \\end{align*}\\)`}</MathJax>
+                    <MathJax>{`\\(\\begin{align*}
+                        x_{n+1}=x_n-\\frac{f(x_n)}{f^\\prime(x_n)}
+                    \\end{align*}\\)`}</MathJax>
 
-                for some initial guess <MathJax inline>{'\\(x_0\\)'}</MathJax>. To generate the fractal, we iterate Newton&apos;s method some number of times, or until convergence, for each point in the complex plane. Then, we color the initial point based on the closest zero (or the argument in our case), by the number of iterations until convergence, or by a combination of the two. The result is a chaotic fractal pattern, known as a Newton fractal.<br /><br />
+                    for some initial guess <MathJax inline>{'\\(x_0\\)'}</MathJax>. To generate the fractal, we iterate Newton&apos;s method some number of times, or until convergence, for each point in the complex plane. Then, we color the initial point based on the closest zero (or the argument in our case), by the number of iterations until convergence, or by a combination of the two. The result is a chaotic fractal pattern, known as a Newton fractal.<br /><br />
 
-                For the generalized Newton fractal, we modify the Newton iteration slightly by adding a real or complex coefficient <MathJax inline>{'\\(\\alpha\\)'}</MathJax>:
+                    For the generalized Newton fractal, we modify the Newton iteration slightly by adding a real or complex coefficient <MathJax inline>{'\\(\\alpha\\)'}</MathJax>:
 
-                <MathJax>{`\\(\\begin{align*}a
-                    x_{n+1}=x_n-\\alpha\\frac{f(x_n)}{f^\\prime(x_n)}
-                \\end{align*}\\)`}</MathJax>
-            </Accordion>
-
-            <Accordion title="How do I use this?">
-                Click and drag to move, and use the menu to zoom and reset. Enter the coefficients to the polynomial in the marked fields. Use the dropdown to select the coloring method, and the sliders to change the real and imaginary parts of <MathJax inline>{'\\(\\alpha\\)'}</MathJax>. Press <strong>Save image</strong> to save an image of your fractal.
-            </Accordion>
-
+                    <MathJax>{`\\(\\begin{align*}a
+                        x_{n+1}=x_n-\\alpha\\frac{f(x_n)}{f^\\prime(x_n)}
+                    \\end{align*}\\)`}</MathJax>
+                </p>},
+                {title: "How do I use this?", content: <p>
+                    Click and drag to move, and use the menu to zoom and reset. Enter the coefficients to the polynomial in the marked fields. Use the dropdown to select the coloring method, and the sliders to change the real and imaginary parts of <MathJax inline>{'\\(\\alpha\\)'}</MathJax>. Press <strong>Save image</strong> to save an image of your fractal.
+                </p>}
+            ]} />
             <hr />
 
             <p>Polynomial:</p>

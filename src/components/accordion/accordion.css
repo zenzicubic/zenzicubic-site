@@ -1,39 +1,71 @@
+:root {
+    --accordion-icon-size: 0.7em;
+    --accordion-header-padding: 10px 20px;
+    --expand-transition: grid-template-rows var(--transition-duration) ease-in-out;
+}
+
 .accordion {
+    overflow: hidden;
+
     border: var(--border);
     border-radius: var(--border-radius);
     background-color: var(--dark-col-3);
 }
 
-.accordion:not(:last-child) { 
-    margin-bottom: var(--small-spacing); 
-}
-
-.accordion-top {
+.accordion-section-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    width: 100%;
+    border-radius: 0px;
+    background-color: var(--dark-col-4);
+    padding: var(--accordion-header-padding);
+}
+
+.accordion-section.active > .accordion-section-header {
+    background-color: var(--elt-col-2);
+}
+
+.section-arrow {
+    transform: rotate(0deg);
+    transition: transform var(--transition-duration) ease-in-out;
+    border-left: calc(0.5 * var(--accordion-icon-size)) solid transparent;
+    border-right: calc(0.5 * var(--accordion-icon-size)) solid transparent;
+    border-top: calc(0.866 * var(--accordion-icon-size)) solid var(--light-col-1);
+}
+
+.accordion-section.active .section-arrow {
+    transform: rotate(180deg);
+}
+
+.section-wrapper {
+    display: grid;
+    visibility: hidden;
     
-    padding: var(--small-spacing);
+    grid-template-rows: 0fr;
+    padding: 0px var(--small-spacing);
+    transition: visibility 0s var(--transition-duration),
+                var(--expand-transition);
 }
 
-.accordion-title {    
-    color: var(--light-col-1);
+.section-content {
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
-.accordion.active > .accordion-top {
-    border-bottom: var(--border); 
+.accordion-section.active > .section-wrapper {
+    visibility: visible;
+
+    grid-template-rows: 1fr;
+    transition: var(--expand-transition);
 }
 
-.accordion-content {
-    display: none;
-
-    padding:  var(--small-spacing);
+@keyframes fold-out {
+    0% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
 }
 
-.accordion.active > .accordion-content { 
-    display: block; 
-}
-
-.accordion-button {
-    font-weight: bold;
+.accordion-section:not(:last-child) {
+    border-bottom: var(--border);
 }

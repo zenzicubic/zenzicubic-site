@@ -8,7 +8,7 @@ import { useRef, useCallback } from 'react';
 import { MathJax } from 'better-react-mathjax';
 
 import Slider from '../../components/slider/Slider';
-import Checkbox from '../../components/checkbox/Checkbox';
+import Toggle from '../../components/toggle/Toggle';
 import Accordion from '../../components/accordion/Accordion';
 
 import { CanvasDemo } from '../../components/demos/demos';
@@ -49,7 +49,7 @@ const colorMap = (t) => {
     // Clamp color
     t = 4 * clamp(t + .5, 0, 1);
 
-    // Piecewise color function.
+    // Piecewise color function
     let [r, g, b] = [255, 255, 255];
     if (t < 1) {
         r = 0;
@@ -159,13 +159,15 @@ function StringWavesDemo() {
         let scl = sclInfo.current;
         let x = offsetLeft;
         let y, lastY = yLeft.current;
+        ctx.current.strokeStyle = "#FC6255";
         
         for (let i = 0; i < nPts; i ++) {
             // Set the color
             y = disp.current[i].x;
-            if (doColors.current) 
+            if (doColors.current) {
                 ctx.current.strokeStyle = colorMap(y);
-
+            }
+            
             // Draw the segment
             ctx.current.beginPath();
             ctx.current.moveTo(x, -scl.yScale * lastY)
@@ -327,25 +329,26 @@ function StringWavesDemo() {
             onInteractionEnd={() => isDragging.current = false }>
             <p>This is an interactive computer simulation of waves on a string with one end movable and the other end fixed.</p>
 
-            <Accordion title="What is this?">
-                To predict how the waves travel along the string, we must solve the (damped) <a href="https://en.wikipedia.org/wiki/Wave_equation" target="_blank" rel="noopener noreferrer">wave equation</a>, also known as d&apos;Alembert&apos;s equation. The wave equation is a second-order partial differential equation:
-                <MathJax>{`\\(\\begin{align*} 
-                    \\frac{\\partial^2 \\Psi}{\\partial t^2} = 
-                    \\nu^2 \\frac{\\partial^2 \\Psi}{\\partial x^2} - 
-                    \\mu \\frac{\\partial \\Psi}{\\partial t}
-                \\end{align*}\\)`}</MathJax>
-                where <MathJax inline>{'\\(\\Psi(x,t)\\)'}</MathJax> is the string displacement at a given position, <MathJax inline>{'\\(\\nu\\)'}</MathJax> is the wave speed, and <MathJax inline>{'\\(\\mu\\)'}</MathJax> is damping.<br /><br />
-
-                We solve the wave equation numerically using <a href="https://en.wikipedia.org/wiki/Verlet_integration" target="_blank" rel="noopener noreferrer">Verlet integration</a> with spatial discretization and the Dirichlet boundary conditions
-                <MathJax>{`\\(
-                    \\Psi(0, t) = H, \\Psi(L, t) = 0
-                \\)`}</MathJax>
-                where <MathJax inline>{'\\(H\\)'}</MathJax> is the height of the string on the left side and <MathJax inline>{'\\(L\\)'}</MathJax> is its length.
-            </Accordion>
-
-            <Accordion title="How do I use this?">
-                Click and drag the block on the left hand side of the screen to move the string up and down. The program initializes with a Gaussian wave packet. Use the sliders to change the constants. Use the checkbox to change the color mode. Use the <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> button to play or pause the demo, and the <span className="material-icons small">replay</span> button to reset.
-            </Accordion>
+            <Accordion sections={[
+                {title: "What is this?", content: <p>
+                    To predict how the waves travel along the string, we must solve the (damped) <a href="https://en.wikipedia.org/wiki/Wave_equation" target="_blank" rel="noopener noreferrer">wave equation</a>, also known as d&apos;Alembert&apos;s equation. The wave equation is a second-order partial differential equation:
+                    <MathJax>{`\\(\\begin{align*} 
+                        \\frac{\\partial^2 \\Psi}{\\partial t^2} = 
+                        \\nu^2 \\frac{\\partial^2 \\Psi}{\\partial x^2} - 
+                        \\mu \\frac{\\partial \\Psi}{\\partial t}
+                    \\end{align*}\\)`}</MathJax>
+                    where <MathJax inline>{'\\(\\Psi(x,t)\\)'}</MathJax> is the string displacement at a given position, <MathJax inline>{'\\(\\nu\\)'}</MathJax> is the wave speed, and <MathJax inline>{'\\(\\mu\\)'}</MathJax> is damping.<br /><br />
+    
+                    We solve the wave equation numerically using <a href="https://en.wikipedia.org/wiki/Verlet_integration" target="_blank" rel="noopener noreferrer">Verlet integration</a> with spatial discretization and the Dirichlet boundary conditions
+                    <MathJax>{`\\(
+                        \\Psi(0, t) = H, \\Psi(L, t) = 0
+                    \\)`}</MathJax>
+                    where <MathJax inline>{'\\(H\\)'}</MathJax> is the height of the string on the left side and <MathJax inline>{'\\(L\\)'}</MathJax> is its length.
+                </p>},
+                {title: "How do I use this?", content: <p>
+                    Click and drag the block on the left hand side of the screen to move the string up and down. The program initializes with a Gaussian wave packet. Use the sliders to change the constants. Use the toggle to change the color mode. Use the <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> button to play or pause the demo, and the <span className="material-icons small">replay</span> button to reset.
+                </p>}
+            ]} />
             <hr />
 
             <h3>Parameters</h3>
@@ -358,9 +361,9 @@ function StringWavesDemo() {
                     params.current.damping = val;
             }}/>
 
-            <Checkbox label="Color by height" name="doColors" isChecked={doColors.current} 
-                onChange={(val) => {
-                    doColors.current = val;
+            <Toggle label="Color by height" name="doColors" isToggled={doColors.current} 
+                onChange={(toggled) => {
+                    doColors.current = toggled;
             }} />
 
             <ButtonGroup>

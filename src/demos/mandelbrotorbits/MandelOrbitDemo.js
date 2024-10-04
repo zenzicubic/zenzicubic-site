@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 import { Complex, complex } from '../../math';
 import { CanvasDemo } from '../../components/demos/demos';
-import Checkbox from '../../components/checkbox/Checkbox';
+import Toggle from '../../components/toggle/Toggle';
 import fractalImg from './mandelbrot_set.png';
 
 // Constants
@@ -185,8 +185,8 @@ function MandelOrbitDemo() {
             onInteractionMove={handleMove} onInteractionEnd={() => isDragging.current = false }>
                 <p>This is a visualization of the internal orbits of the Mandelbrot set. I have more info <Link to="/articles/mandelbrotexplained">here</Link>. Click and drag, and a path will emerge.</p>
                 <hr />
-                <Checkbox name="doLines" isChecked={doLines.current} label="Show lines" onChange={(checked) => {
-                    doLines.current = checked;
+                <Toggle name="doLines" isToggled={doLines.current} label="Show lines" onChange={(toggled) => {
+                    doLines.current = toggled;
                 }} />
         </CanvasDemo>    
     </>);

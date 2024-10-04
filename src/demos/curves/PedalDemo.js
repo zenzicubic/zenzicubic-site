@@ -216,15 +216,16 @@ function PedalDemo() {
             redrawScene={redrawScene} params={demoParams} ref={demoRef}>
             <p>
                 This is a demonstration of <a href="https://youtu.be/ejtqjxGvhL0" target="_blank" rel="noopener noreferrer">pedal curves</a>.</p>
-                
-            <Accordion title="What are pedal curves?">
-                Pedal curves are plane curves produced from other plane curves by the following construction:<br /><br />
+                <Accordion sections={[
+                    {title: "What are pedal curves?", content: <p>
+                        Pedal curves are plane curves produced from other plane curves by the following construction:<br /><br />
 
-                Mark a point <MathJax inline>{'\\(P\\)'}</MathJax> on some curve <MathJax inline>{'\\(\\mathcal{C}\\)'}</MathJax>, and construct the tangent at that point. Mark another point <MathJax inline>{'\\(O\\)'}</MathJax> called the pedal point, and draw the line perpendicular to the tangent through it. The locus of the intersection of those two lines, which we'll call <MathJax inline>{'\\(\\mathcal{I}\\)'}</MathJax>, is the pedal curve of <MathJax inline>{'\\(\\mathcal{C}\\)'}</MathJax>.
-            </Accordion>
-            <Accordion title="How do I use this?">
-                Click and drag the red pedal point, and use the dropdown to choose a curve. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the animation.
-            </Accordion>
+                        Mark a point <MathJax inline>{'\\(P\\)'}</MathJax> on some curve <MathJax inline>{'\\(\\mathcal{C}\\)'}</MathJax>, and construct the tangent at that point. Mark another point <MathJax inline>{'\\(O\\)'}</MathJax> called the pedal point, and draw the line perpendicular to the tangent through it. The locus of the intersection of those two lines, which we'll call <MathJax inline>{'\\(\\mathcal{I}\\)'}</MathJax>, is the pedal curve of <MathJax inline>{'\\(\\mathcal{C}\\)'}</MathJax>.
+                    </p>},
+                    {title: "How do I use this?", content: <p>
+                        Click and drag the red pedal point, and use the dropdown to choose a curve. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the animation.
+                    </p>}
+                ]} />
             <hr />
             <p>Curve:</p>
             <Select 

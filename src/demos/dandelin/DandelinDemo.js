@@ -265,12 +265,14 @@ function DandelinDemo() {
         <Demo title="Dandelin spheres">
             <p>This is a demo of a modification of the <a href="https://en.wikipedia.org/wiki/Dandelin_spheres" target="_blank" rel="noopener noreferrer">Dandelin spheres</a>, a set of special spheres that provide a beautiful proof of the equivalence of two famous methods of constructing ellipses.</p>
 
-            <Accordion title="What is this?">
-                There are many methods to construct ellipses, but two of the most famous are cutting a cylinder by a plane and the <a href="https://en.wikipedia.org/wiki/Ellipse#Pins-and-string_method" target="_blank" rel="noopener noreferrer">pins-and-string method</a>. Essentially, if we draw two spheres (the Dandelin spheres) tangent to both the cylinder and the cutting plane at one of the foci, we can look at the relationships between the segments connecting points on circles of tangency to a point on the ellipse and the segments connecting the foci to that same point to prove the equivalence of these two methods. Congruent segments have the same color here. This technique is usually done with a cone rather than a cylinder, but I&apos;ve used a simpler version as described on pg. 7 of the book <i>Geometry and the Imagination</i> by David Hilbert and Stefan Cohn-Vossen.
-            </Accordion>
-            <Accordion title="How do I use this?">
-                Click or tap and drag to rotate. Use the slider to change the cutting plane angle. Press the <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> button to play or pause the animation.
-            </Accordion>
+            <Accordion sections={[
+                {title: "What is this?", content: <p>
+                    There are many methods to construct ellipses, but two of the most famous are cutting a cylinder by a plane and the <a href="https://en.wikipedia.org/wiki/Ellipse#Pins-and-string_method" target="_blank" rel="noopener noreferrer">pins-and-string method</a>. Essentially, if we draw two spheres (the Dandelin spheres) tangent to both the cylinder and the cutting plane at one of the foci, we can look at the relationships between the segments connecting points on circles of tangency to a point on the ellipse and the segments connecting the foci to that same point to prove the equivalence of these two methods. Congruent segments have the same color here. This technique is usually done with a cone rather than a cylinder, but I&apos;ve used a simpler version as described on pg. 7 of the book <i>Geometry and the Imagination</i> by David Hilbert and Stefan Cohn-Vossen.
+                </p>},
+                {title: "How do I use this?", content: <p>
+                    Click or tap and drag to rotate. Use the slider to change the cutting plane angle. Press the <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> button to play or pause the animation.
+                </p>}
+            ]} />
             <hr />
 
             <Slider label="Cutting plane angle" min="10" max="65" value="40" onChange={(val) => {

@@ -189,23 +189,25 @@ function StellationDemo() {
         <CanvasDemo title="Stellations" canvasRef={canvasRef} onInitialize={initialize} onResize={handleResize}>
             <p>This is an interactive demo of the 227 fully supported <a href="https://en.wikipedia.org/wiki/Stellation#Stellating_polyhedra" target="_blank" rel="noopener noreferrer">stellations</a> of the rhombic triacontahedron.</p>
 
-            <Accordion title="What is this?">
-                Stellation is a geometric process in which all of a polyhedron&apos;s faces are extended outward until they intersect again. These new intersections create volumes called &quot;cells&quot;. We can visualize these intersections as lines in the plane of one of the polyhedron&apos;s faces. This pattern is called a stellation diagram:<br />
+            <Accordion sections={[
+                {title: "What is this?", content: <p>
+                    Stellation is a geometric process in which all of a polyhedron&apos;s faces are extended outward until they intersect again. These new intersections create volumes called &quot;cells&quot;. We can visualize these intersections as lines in the plane of one of the polyhedron&apos;s faces. This pattern is called a stellation diagram:<br />
 
-                <img src={diagram} id="interstitial-img"
-                    alt="Stellation diagram for rhombic triacontahedron"/><br />
+                    <img src={diagram} id="interstitial-img"
+                        alt="Stellation diagram for rhombic triacontahedron"/><br />
 
-                This particular stellation diagram is the diagram for the <a href="https://en.wikipedia.org/wiki/Rhombic_triacontahedron" target="_blank" rel="noopener noreferrer">rhombic triacontahedron</a>, a 30-sided polyhedron with rhombic faces and icosahedral symmetry. Each of the polygons in this diagram, knowwn as &quot;facets&quot; may or may not be filled in, and the faces of the original polyhedron are replaced with the stellation diagram to create stellations of this polyhedron. The polygons in the stellation diagram thus become the faces of the cells in the stellation.<br /><br />
+                    This particular stellation diagram is the diagram for the <a href="https://en.wikipedia.org/wiki/Rhombic_triacontahedron" target="_blank" rel="noopener noreferrer">rhombic triacontahedron</a>, a 30-sided polyhedron with rhombic faces and icosahedral symmetry. Each of the polygons in this diagram, knowwn as &quot;facets&quot; may or may not be filled in, and the faces of the original polyhedron are replaced with the stellation diagram to create stellations of this polyhedron. The polygons in the stellation diagram thus become the faces of the cells in the stellation.<br /><br />
 
-                Generally, only arrangements of these polygons are chosen such that the resulting stellations have the same symmetries (either rotational or reflectional) as the original solid, and all of the cells in the stellation are of finite volume. Stellations with only rotational symmetry are called &quot;chiral&quot;, and have multiple forms which cannot be superposed, a bit like your left and right hands. Stellations not possessing this property are referred to as &quot;achiral&quot;. 112 of the stellations shown here are chiral, and the other 115 are achiral.<br /><br />
-                
-                For the rhombic triacontahedron, this gives 358 million different stellations. Here, a further condition is applied to reduce this number to a more reasonable 227: only stellations which have a distinct inside and outside are considered. That is to say that only one of the sides of each face is exposed. These stellations are called &quot;fully supported&quot;.<br /><br />
+                    Generally, only arrangements of these polygons are chosen such that the resulting stellations have the same symmetries (either rotational or reflectional) as the original solid, and all of the cells in the stellation are of finite volume. Stellations with only rotational symmetry are called &quot;chiral&quot;, and have multiple forms which cannot be superposed, a bit like your left and right hands. Stellations not possessing this property are referred to as &quot;achiral&quot;. 112 of the stellations shown here are chiral, and the other 115 are achiral.<br /><br />
 
-                The paper <a href="https://www.researchgate.net/publication/265206552_Stellations_of_the_Rhombic_Triacontahedron_and_Beyond"  target="_blank" rel="noopener noreferrer">&quot;Stellations of the Rhombic Triacontahedron and Beyond&quot;</a> enumerates the 227 such fully supported stellations of the rhombic triacontahedron, and describes a notation for describing them based on stellation cells. This paper helped me quite a lot to write this demo.
-            </Accordion>
-            <Accordion title="How do I use this?">
-                Click and drag to rotate. Scroll or pinch to zoom. To select a stellation, use the selection dropdown. Stellations are named using the cell-based notation described in the paper mentioned above. If the stellation is chiral, its name will be <i>italicized</i>. For chiral stellations, one enantiomorph each is displayed. If the stellation is known by another name, this other name will be displayed in parentheses after the stellation symbol.
-            </Accordion>
+                    For the rhombic triacontahedron, this gives 358 million different stellations. Here, a further condition is applied to reduce this number to a more reasonable 227: only stellations which have a distinct inside and outside are considered. That is to say that only one of the sides of each face is exposed. These stellations are called &quot;fully supported&quot;.<br /><br />
+
+                    The paper <a href="https://www.researchgate.net/publication/265206552_Stellations_of_the_Rhombic_Triacontahedron_and_Beyond"  target="_blank" rel="noopener noreferrer">&quot;Stellations of the Rhombic Triacontahedron and Beyond&quot;</a> enumerates the 227 such fully supported stellations of the rhombic triacontahedron, and describes a notation for describing them based on stellation cells. This paper helped me quite a lot to write this demo.
+                </p>},
+                {title: "How do I use this?", content: <p>
+                    Click and drag to rotate. Scroll or pinch to zoom. To select a stellation, use the selection dropdown. Stellations are named using the cell-based notation described in the paper mentioned above. If the stellation is chiral, its name will be <i>italicized</i>. For chiral stellations, one enantiomorph each is displayed. If the stellation is known by another name, this other name will be displayed in parentheses after the stellation symbol.
+                </p>}
+            ]} />
             <hr />
 
             <p>Stellation</p>

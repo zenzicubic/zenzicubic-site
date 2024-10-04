@@ -62,11 +62,11 @@
 }
 
 .header-link:hover:not(.selected) > button { 
-    background-color: var(--elt-col-4); 
+    background-color: var(--elt-col-2);
 }
 
 .header-link.selected > button { 
-    background-color: var(--elt-col-2); 
+    background-color: var(--elt-col-1); 
 }
 
 #main-content {

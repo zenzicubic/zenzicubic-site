@@ -410,21 +410,22 @@ function SpringMassDemo() {
             onInteractionEnd={handleDragEnd}>
             <p>This is an interactive simulation of a simple damped spring-mass system, which you may know about from your physics classes.</p>
 
-            <Accordion title="What is this?">
-                A spring-mass system, more technically a type of <a href="https://en.wikipedia.org/wiki/Harmonic_oscillator" target="_blank" rel="noopener noreferrer">damped harmonic oscillator</a>, is one of the simplest physical systems. It consists of a mass attached to a spring. The displacement of the spring from its rest length is described by the linear differential equation:
+            <Accordion sections={[
+                {title: "What is this?", content: <p>
+                    A spring-mass system, more technically a type of <a href="https://en.wikipedia.org/wiki/Harmonic_oscillator" target="_blank" rel="noopener noreferrer">damped harmonic oscillator</a>, is one of the simplest physical systems. It consists of a mass attached to a spring. The displacement of the spring from its rest length is described by the linear differential equation:
 
-                <MathJax>{`\\( \\begin{align*} 
-                    m\\ddot{x} + \\mu \\dot{x} + kx = 0
-                \\end{align*} \\)`}</MathJax>
+                    <MathJax>{`\\( \\begin{align*} 
+                        m\\ddot{x} + \\mu \\dot{x} + kx = 0
+                    \\end{align*} \\)`}</MathJax>
 
-                <MathJax inline>{'\\(x\\)'}</MathJax> represents the spring&apos;s displacement. As for the coefficients, <MathJax inline>{'\\(m\\)'}</MathJax> is the magnitude of the mass, <MathJax inline>{'\\(\\mu\\)'}</MathJax> is the damping coefficient which represents air resistance and the like, and <MathJax inline>{'\\(k\\)'}</MathJax> is the spring constant (see <a href="https://en.wikipedia.org/wiki/Hooke%27s_law" target="_blank" rel="noopener noreferrer">Hooke&apos;s law</a>). Though these equations may be solved analytically, the equations are solved numerically using Runge-Kutta 4 (RK4) integration.
-            </Accordion>
-
-            <Accordion title="How do I use this?">
-                There are three different views: a visualization of the spring and mass, a <MathJax inline>{'\\(x-\\dot{x}\\)'}</MathJax> phase plane plot, and a time-series plot. Use the menu at the bottom to switch between them. You can move the mass (the white square) by clicking and dragging it when in the system view.<br /><br />
+                    <MathJax inline>{'\\(x\\)'}</MathJax> represents the spring&apos;s displacement. As for the coefficients, <MathJax inline>{'\\(m\\)'}</MathJax> is the magnitude of the mass, <MathJax inline>{'\\(\\mu\\)'}</MathJax> is the damping coefficient which represents air resistance and the like, and <MathJax inline>{'\\(k\\)'}</MathJax> is the spring constant (see <a href="https://en.wikipedia.org/wiki/Hooke%27s_law" target="_blank" rel="noopener noreferrer">Hooke&apos;s law</a>). Though these equations may be solved analytically, the equations are solved numerically using Runge-Kutta 4 (RK4) integration.
+                </p>},
+                {title: "How do I use this?", content: <p>
+                    There are three different views: a visualization of the spring and mass, a <MathJax inline>{'\\(x-\\dot{x}\\)'}</MathJax> phase plane plot, and a time-series plot. Use the menu at the bottom to switch between them. You can move the mass (the white square) by clicking and dragging it when in the system view.<br /><br />
                 
-                The physical parameters of the system (mass <MathJax inline>{'\\(m\\)'}</MathJax>, damping <MathJax inline>{'\\(\\mu\\)'}</MathJax> and spring constant <MathJax inline>{'\\(k\\)'}</MathJax>) may be modified using the sliders. The elapsed time, potential, and kinetic energy are displayed in the upper left-hand corner. Use the <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> button to play or pause the animation. To reset the simulation, press the <span className="material-icons small">replay</span> button. Any time the spring is moved the simulation is automatically reset.
-            </Accordion>
+                    The physical parameters of the system (mass <MathJax inline>{'\\(m\\)'}</MathJax>, damping <MathJax inline>{'\\(\\mu\\)'}</MathJax> and spring constant <MathJax inline>{'\\(k\\)'}</MathJax>) may be modified using the sliders. The elapsed time, potential, and kinetic energy are displayed in the upper left-hand corner. Use the <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> button to play or pause the animation. To reset the simulation, press the <span className="material-icons small">replay</span> button. Any time the spring is moved the simulation is automatically reset.
+                </p>}
+            ]} />
             <hr />
 
             <Slider label={<MathJax inline>{'\\(m\\)'}</MathJax>} min="0.1" 

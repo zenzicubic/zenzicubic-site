@@ -229,20 +229,22 @@ function SteinerDemo() {
             onInteractionEnd={() => isDragging.current = false}>
             <p>This is a visualization of <a href="https://en.wikipedia.org/wiki/Steiner_chain" target="_blank" rel="noopener noreferrer">Steiner chains</a>, and their relationship to M&ouml;bius transformations.</p>
 
-            <Accordion title="What is this?">
-                Suppose we have two non-intersecting circles <MathJax inline>{'\\(C_a\\)'}</MathJax> and <MathJax inline>{'\\(C_b\\)'}</MathJax>. If we can create a chain of <MathJax inline>{'\\(n\\)'}</MathJax> circles that are tangent to both <MathJax inline>{'\\(C_a\\)'}</MathJax> and <MathJax inline>{'\\(C_b\\)'}</MathJax>, then we can create infinitely many such chains. This theorem is called Steiner&apos;s porism, and the chains of circles are called Steiner chains. Here, we consider the case where each circle in the ring is tangent to its neighbors.<br /><br />
+            <Accordion sections={[
+                {title: "What is this?", content: <p>
+                    Suppose we have two non-intersecting circles <MathJax inline>{'\\(C_a\\)'}</MathJax> and <MathJax inline>{'\\(C_b\\)'}</MathJax>. If we can create a chain of <MathJax inline>{'\\(n\\)'}</MathJax> circles that are tangent to both <MathJax inline>{'\\(C_a\\)'}</MathJax> and <MathJax inline>{'\\(C_b\\)'}</MathJax>, then we can create infinitely many such chains. This theorem is called Steiner&apos;s porism, and the chains of circles are called Steiner chains. Here, we consider the case where each circle in the ring is tangent to its neighbors.<br /><br />
 
-                To create the chains, we draw circles at the vertices of a regular polygon, scaled so that they are tangent to the unit circle. To convert this &quot;special&quot; Steiner chain to a more general Steiner chain, we apply a M&ouml;bius transformation which preserves the unit circle. Specifically, we apply the mapping<br />
-                <MathJax>{`\\(\\begin{align*}
-                    z \\mapsto \\frac{z + a}{\\overline{a}z + 1}    
-                \\end{align*}\\)`}</MathJax>
-                which takes the origin to the complex number <MathJax inline>{'\\(a\\)'}</MathJax> while preserving the unit circle.
-            </Accordion>
-            <Accordion title="How do I use this?">
-                Click and drag the white point to change <MathJax inline>{'\\(a.\\)'}</MathJax> Use the slider to change the number of circles, and press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the rotation animation.
-            </Accordion>
-
+                    To create the chains, we draw circles at the vertices of a regular polygon, scaled so that they are tangent to the unit circle. To convert this &quot;special&quot; Steiner chain to a more general Steiner chain, we apply a M&ouml;bius transformation which preserves the unit circle. Specifically, we apply the mapping<br />
+                    <MathJax>{`\\(\\begin{align*}
+                        z \\mapsto \\frac{z + a}{\\overline{a}z + 1}    
+                        \\end{align*}\\)`}</MathJax>
+                    which takes the origin to the complex number <MathJax inline>{'\\(a\\)'}</MathJax> while preserving the unit circle.
+                </p>},
+                {title: "How do I use this?", content: <p>
+                    Click and drag the white point to change <MathJax inline>{'\\(a.\\)'}</MathJax> Use the slider to change the number of circles, and press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the rotation animation.
+                </p>}
+            ]} />
             <hr />
+            
             <Slider label="No. circles" min="3" max="20" step="1" 
                 value={nCircles.current} onChange={(n) => {
                     nCircles.current = n;

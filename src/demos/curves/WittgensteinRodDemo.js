@@ -100,12 +100,14 @@ function WittgensteinRodDemo() {
         <CurveDemo title="Wittgenstein&apos;s rod" updateGeometryData={updateGeometryData}
             redrawScene={redrawScene} params={demoParams} ref={demoRef}>
                 <p>This is an interactive demonstration of <a href="https://youtu.be/0R1_wU_aEVI" target="_blank" rel="noopener noreferrer">Wittgenstein&apos;s rod</a>.</p>
-                <Accordion title="What is this?">
-                    Wittgenstein&apos;s rod is a geometric puzzle first posed by philosopher Ludwig Wittgenstein. It goes: Consider a point <MathJax inline>{'\\(P\\)'}</MathJax> on some circle <MathJax inline>{'\\(\\mathcal{C}\\)'}</MathJax> with radius <MathJax inline>{'\\(r\\)'}</MathJax>. Then, mark another arbitrary point <MathJax inline>{'\\(Q\\)'}</MathJax>. Draw ray <MathJax inline>{'\\(PQ\\)'}</MathJax>, and mark point <MathJax inline>{'\\(R\\)'}</MathJax> on ray <MathJax inline>{'\\(PQ\\)'}</MathJax> so that <MathJax inline>{'\\(PR = \\ell\\)'}</MathJax> for some constant <MathJax inline>{'\\(\\ell\\)'}</MathJax>. What is the locus of <MathJax inline>{'\\(R\\)'}</MathJax>?
-                </Accordion>
-                <Accordion title="How do I use this?">
-                    Drag the red point to change <MathJax inline>{'\\(Q\\)'}</MathJax>, and change the values of the sliders. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the demo.
-                </Accordion>
+                <Accordion sections={[
+                    {title: "What is this?", content: <p>
+                        Wittgenstein&apos;s rod is a geometric puzzle first posed by philosopher Ludwig Wittgenstein. It goes: Consider a point <MathJax inline>{'\\(P\\)'}</MathJax> on some circle <MathJax inline>{'\\(\\mathcal{C}\\)'}</MathJax> with radius <MathJax inline>{'\\(r\\)'}</MathJax>. Then, mark another arbitrary point <MathJax inline>{'\\(Q\\)'}</MathJax>. Draw ray <MathJax inline>{'\\(PQ\\)'}</MathJax>, and mark point <MathJax inline>{'\\(R\\)'}</MathJax> on ray <MathJax inline>{'\\(PQ\\)'}</MathJax> so that <MathJax inline>{'\\(PR = \\ell\\)'}</MathJax> for some constant <MathJax inline>{'\\(\\ell\\)'}</MathJax>. What is the locus of <MathJax inline>{'\\(R\\)'}</MathJax>?
+                    </p>},
+                    {title: "How do I use this?", content: <p>
+                        Drag the red point to change <MathJax inline>{'\\(Q\\)'}</MathJax>, and change the values of the sliders. Press <span className="material-icons small">play_arrow</span>/<span className="material-icons small">pause</span> to play or pause the demo.
+                    </p>}
+                ]} />
                 <hr />
                 <Slider min={0.5} max={2.5} step={1e-2} value={params.current.r} 
                     label={<MathJax inline>{'\\(r\\)'}</MathJax>} onChange={(r) => {
