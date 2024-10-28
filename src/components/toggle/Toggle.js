@@ -11,19 +11,19 @@ import './toggle.css';
 
 function Toggle(props) {
     const [isToggled, setToggled] = useState(props.isToggled);
-    const id = "toggle-" + props.name;
-
+    
     return (
-        <div className="toggle-container">
+        <label className="toggle-container">
             <input 
-                type="checkbox" className="toggle" checked={isToggled}
-                id={id} onChange={(evt) => {
+                type="checkbox" className="toggle-input" 
+                checked={isToggled} onChange={(evt) => {
                     let toggled = evt.target.checked;
                     setToggled(toggled);
                     props.onChange(toggled);
                 }}/>
-            <label htmlFor={id} className="toggle-lbl">{props.label}</label>
-        </div>
+            <span className="toggle"></span>
+            {props.label}
+        </label>
     );
 };
 

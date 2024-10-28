@@ -361,7 +361,7 @@ function StringWavesDemo() {
                     params.current.damping = val;
             }}/>
 
-            <Toggle label="Color by height" name="doColors" isToggled={doColors.current} 
+            <Toggle label="Color by height" isToggled={doColors.current} 
                 onChange={(toggled) => {
                     doColors.current = toggled;
             }} />

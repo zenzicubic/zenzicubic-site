@@ -345,7 +345,7 @@ function SpirographDemo() {
             </div>
 
             <hr />
-            <Toggle label="Show gears" name="doGears" isToggled={doGears.current} onChange={(toggled) => {
+            <Toggle label="Show gears" isToggled={doGears.current} onChange={(toggled) => {
                 doGears.current = toggled;
             }}/>
         </CanvasDemo>

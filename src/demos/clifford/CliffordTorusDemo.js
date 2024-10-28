@@ -293,7 +293,7 @@ function CliffordTorusDemo() {
             ]} />
             <hr />
 
-            <Toggle label="Orthographic projection" isToggled={doOrtho.current} name="doOrtho" onChange={(toggled) => {
+            <Toggle label="Orthographic projection" isToggled={doOrtho.current} onChange={(toggled) => {
                 doOrtho.current = toggled;
             }} />
             <button onClick={handleRotPause}>

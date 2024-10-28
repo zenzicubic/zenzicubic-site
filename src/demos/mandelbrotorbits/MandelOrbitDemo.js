@@ -185,7 +185,7 @@ function MandelOrbitDemo() {
             onInteractionMove={handleMove} onInteractionEnd={() => isDragging.current = false }>
                 <p>This is a visualization of the internal orbits of the Mandelbrot set. I have more info <Link to="/articles/mandelbrotexplained">here</Link>. Click and drag, and a path will emerge.</p>
                 <hr />
-                <Toggle name="doLines" isToggled={doLines.current} label="Show lines" onChange={(toggled) => {
+                <Toggle isToggled={doLines.current} label="Show lines" onChange={(toggled) => {
                     doLines.current = toggled;
                 }} />
         </CanvasDemo>    

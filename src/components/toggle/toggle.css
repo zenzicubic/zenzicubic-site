@@ -1,32 +1,39 @@
 :root {
-    --toggle-dot-sz: 1.4em;
+    --toggle-dot-sz: 1.2em;
     --toggle-padding: 0.1em;
 }
 
 .toggle-container {
     display: flex;
     align-items: center;
-
-    column-gap: var(--small-spacing);
 }
 
 .toggle-container:not(:last-child) {
     margin-bottom: var(--small-spacing);
 }
 
-.toggle {
+.toggle-input {
     appearance: none;
+
+    width: 0;
+    height: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+.toggle {
     position: relative;
 
-    outline: var(--border);
+    border: var(--border);
+    margin-right: var(--small-spacing);
     border-radius: var(--toggle-dot-sz);
     background-color: var(--dark-col-3);
     height: calc(var(--toggle-dot-sz) + 2 * var(--toggle-padding));
-    width: calc(var(--toggle-dot-sz) * 2 + var(--toggle-padding) * 2);
+    width: calc(2 * (var(--toggle-dot-sz) + var(--toggle-padding)));
     transition: background-color var(--transition-duration) ease-in-out;
 }
 
-.toggle:checked {
+.toggle-input:checked + .toggle {
     background-color: var(--elt-col-1);
 }
 
@@ -35,23 +42,23 @@
     position: absolute;
 
     content: "";
+    border-radius: 100%;
     top: var(--toggle-padding);
     left: var(--toggle-padding);
     width: var(--toggle-dot-sz);
     height: var(--toggle-dot-sz);
-    border-radius: var(--toggle-dot-sz);
     background-color: var(--light-col-1);
-    transition: transform var(--transition-duration) ease-in-out;
+    transition: left var(--transition-duration) ease-in-out;
 }
 
-.toggle:hover {
+.toggle-input:hover + .toggle {
     background-color: var(--dark-col-4);
 }
 
-.toggle:checked:hover {
+.toggle-input:checked:hover + .toggle {
     background-color: var(--elt-col-2);
 }
 
-.toggle:checked::before {
-    transform: translateX(var(--toggle-dot-sz));
+.toggle-input:checked + .toggle::before {
+    left: calc(var(--toggle-padding) + var(--toggle-dot-sz));
 }
