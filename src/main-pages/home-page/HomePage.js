@@ -36,11 +36,11 @@ function HomePage() {
 
                 <a href="https://twitter.com/zenzicubic" 
                     target="_blank" className="homepage-btn-link"
-                    rel="noopener noreferrer">Twitter</a>
+                    rel="noopener noreferrer">Twitter (no longer active)</a>
 
-                <a href="https://vtubers.me/zenzicubic" 
+                <a href="https://bsky.app/profile/zenzicubic.dev" 
                     target="_blank" className="homepage-btn-link"
-                    rel="noopener noreferrer">vTubers.Me</a>
+                    rel="noopener noreferrer">Bluesky</a>
 
                 <a href="https://vtubie.com/zenzicubic/" 
                     target="_blank" className="homepage-btn-link"
