@@ -33,11 +33,7 @@ function HomePage() {
                 <a href="https://www.youtube.com/c/zenzicubic/" 
                     target="_blank" className="homepage-btn-link"
                     rel="noopener noreferrer">YouTube</a>
-
-                <a href="https://twitter.com/zenzicubic" 
-                    target="_blank" className="homepage-btn-link"
-                    rel="noopener noreferrer">Twitter (no longer active)</a>
-
+                    
                 <a href="https://bsky.app/profile/zenzicubic.dev" 
                     target="_blank" className="homepage-btn-link"
                     rel="noopener noreferrer">Bluesky</a>
