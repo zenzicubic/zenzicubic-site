@@ -25,6 +25,40 @@ const categories = ["Birds and nature", "Mathematical visualization", "Other"]
 
 const images = [
     {
+        title: "Harlequin Duck",
+        description: "A harlequin duck, photographed at Barnegat Light in NJ.",
+        filename: "harlequinduck.png",
+        date: "2 Jan 2025",
+        category: 0
+    }, 
+    {
+        title: "Paper Mill Window",
+        description: "A photo I took of a broken window at the same location as the last photo.",
+        filename: "millwindow.png",
+        date: "2 Jan 2025",
+        category: 2
+    },
+    {
+        title: "Paper Mill Pumps",
+        description: "A photo I took of some pumps at the abandoned Fibermark Paper Mill in Warren County, NJ, which is currently being demolished.",
+        filename: "millpumps.png",
+        date: "2 Jan 2025",
+        category: 2
+    },{
+        title: "Server Room",
+        description: "A photo taken in a dilapidated server room in the abandoned Mercer Hospital.",
+        filename: "servers.png",
+        date: "2 Jan 2025",
+        category: 2
+    },
+    {
+        title: "Kummer Surface",
+        description: <>A rendering of <a href="https://en.wikipedia.org/wiki/Kummer_surface" target="_blank" rel="noopener noreferrer">Kummer&apos;s quartic surface</a>, a nodal surface with 16 double points.</>,
+        filename: "kummer.png",
+        date: "23 Sep 2024",
+        category: 1
+    },
+    {
         title: "Kummer Surface",
         description: <>A rendering of <a href="https://en.wikipedia.org/wiki/Kummer_surface" target="_blank" rel="noopener noreferrer">Kummer&apos;s quartic surface</a>, a nodal surface with 16 double points.</>,
         filename: "kummer.png",
