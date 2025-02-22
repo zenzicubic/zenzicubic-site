@@ -25,6 +25,20 @@ const categories = ["Birds and nature", "Mathematical visualization", "Other"]
 
 const images = [
     {
+        title: "Violet-green Swallow",
+        description: "A picture I took of an oddly cooperative violet-green swallow near La Ventana, Baja California Sur.",
+        filename: "violetgreen.png",
+        date: "2 Feb 2025",
+        category: 0
+    },
+    {
+        title: "California Quail",
+        description: "A picture I took of a California quail perched on a palm tree in La Ventana, Baja California Sur, Mexico.",
+        filename: "califquail.png",
+        date: "2 Feb 2025",
+        category: 0
+    },
+    {
         title: "Wood Duck",
         description: "A rather confused wood duck, seen at the Potash Lake Recreational Area in Oakland, NJ.",
         filename: "woodduck.png",
@@ -380,13 +394,6 @@ const images = [
         filename: "wada.png",
         date: "8 Jul 2023",
         category: 1
-    },
-    {
-        title: "Gambel's Quail",
-        description: "A picture I took of a Gambel's quail in the Bosque del Apache NWR in New Mexico.",
-        filename: "gambelsquail.jpg",
-        date: "12 Apr 2023",
-        category: 0
     },
     {
         title: "Gaussian Rationals",
