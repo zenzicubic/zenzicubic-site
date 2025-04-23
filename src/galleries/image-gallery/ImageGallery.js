@@ -25,6 +25,13 @@ const categories = ["Birds and nature", "Mathematical visualization", "Other"]
 
 const images = [
     {
+        title: "Forster's Tern",
+        description: "A picture of a Forster's tern in flight, taken at Forsythe NWR near Galloway, NJ.",
+        filename: "tern.png",
+        date: "23 Apr 2025",
+        category: 0
+    },
+    {
         title: "Violet-green Swallow",
         description: "A picture I took of an oddly cooperative violet-green swallow near La Ventana, Baja California Sur.",
         filename: "violetgreen.png",
