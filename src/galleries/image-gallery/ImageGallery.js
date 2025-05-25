@@ -25,6 +25,20 @@ const categories = ["Birds and nature", "Mathematical visualization", "Other"]
 
 const images = [
     {
+        title: "Common Buckeye",
+        description: "My first non-bird photo on here. A picture of a common buckeye butterfly I took at the Pole Farm in Mercer County, NJ.",
+        filename: "buckeye_butterfly.png",
+        date: "24 August 2025",
+        category: 0
+    },
+    {
+        title: "Common Yellowthroat",
+        description: "A picture of a perched common yellowthroat, taken at Troy Meadows in Parsippany, NJ.",
+        filename: "yellowthroat.png",
+        date: "25 May 2025",
+        category: 0
+    },
+    {
         title: "Forster's Tern",
         description: "A picture of a Forster's tern in flight, taken at Forsythe NWR near Galloway, NJ.",
         filename: "tern.png",
@@ -35,14 +49,14 @@ const images = [
         title: "Violet-green Swallow",
         description: "A picture I took of an oddly cooperative violet-green swallow near La Ventana, Baja California Sur.",
         filename: "violetgreen.png",
-        date: "2 Feb 2025",
+        date: "22 Feb 2025",
         category: 0
     },
     {
         title: "California Quail",
         description: "A picture I took of a California quail perched on a palm tree in La Ventana, Baja California Sur, Mexico.",
         filename: "califquail.png",
-        date: "2 Feb 2025",
+        date: "22 Feb 2025",
         category: 0
     },
     {
@@ -476,7 +490,7 @@ function ImageGallery() {
         </div>
         <Gallery 
             title="Gallery"
-            description="These are random images that I&apos;ve collected over the years and thought would be worth showing. These are mostly mathematical images and bird photos, but there are also a few miscellaneous photos mixed in." 
+            description={<>These are random images that I&apos;ve collected over the years and thought would be worth showing. These are mostly mathematical images and bird photos, but there are also a few miscellaneous photos mixed in.</>}
             bgImg={bgImg}>
                 {galleryData.map((imgs, i) => (<Fragment key={"category" + i}>
                     <h2 className="category-title">{categories[i]}</h2>

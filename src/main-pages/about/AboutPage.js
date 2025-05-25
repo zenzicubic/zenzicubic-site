@@ -51,6 +51,7 @@ function AboutPage() {
                     <li>My favorite food is margherita pizza, and my favorite drink is chai.</li>
                     <li>I don&apos;t play video games.</li>
                     <li>I am in high school.</li>
+                    <li>I sometimes make edits and create articles on the English Wikipedia.</li>
                 </ul>
 
                 <hr />
