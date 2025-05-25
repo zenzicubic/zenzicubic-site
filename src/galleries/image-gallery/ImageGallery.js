@@ -25,6 +25,13 @@ const categories = ["Birds and nature", "Mathematical visualization", "Other"]
 
 const images = [
     {
+        title: "Common Yellowthroat",
+        description: "A picture of a perched common yellowthroat, taken at Troy Meadows in Parsippany, NJ.",
+        filename: "yellowthroat.png",
+        date: "25 May 2025",
+        category: 0
+    },
+    {
         title: "Forster's Tern",
         description: "A picture of a Forster's tern in flight, taken at Forsythe NWR near Galloway, NJ.",
         filename: "tern.png",
@@ -476,7 +483,8 @@ function ImageGallery() {
         </div>
         <Gallery 
             title="Gallery"
-            description="These are random images that I&apos;ve collected over the years and thought would be worth showing. These are mostly mathematical images and bird photos, but there are also a few miscellaneous photos mixed in." 
+            description={<>These are random images that I&apos;ve collected over the years and thought would be worth showing. These are mostly mathematical images and bird photos, but there are also a few miscellaneous photos mixed in.<br />
+            Some of these images can also be found in articles on the English Wikipedia.</>}
             bgImg={bgImg}>
                 {galleryData.map((imgs, i) => (<Fragment key={"category" + i}>
                     <h2 className="category-title">{categories[i]}</h2>

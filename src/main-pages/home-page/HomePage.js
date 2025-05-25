@@ -54,6 +54,10 @@ function HomePage() {
                     target="_blank" className="homepage-btn-link"
                     rel="noopener noreferrer">GitHub</a>
 
+                <a href="https://en.wikipedia.org/wiki/User:Zenzicubic" 
+                    target="_blank" className="homepage-btn-link"
+                    rel="noopener noreferrer">Wikipedia</a>
+
                 <a href="mailto:contact@zenzicubic.dev"
                     className="homepage-btn-link">Email</a>
             </FrontPageLayout>
