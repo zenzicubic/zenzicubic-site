@@ -25,50 +25,71 @@ const categories = ["Birds and nature", "Mathematical visualization", "Other"]
 
 const images = [
     {
+        title: "Orb Weaver",
+        description: <>A yellow garden spider (<i>Argiope aurantia</i>) seen at Rea Farm in Cape May, NJ.</>,
+        filename: "orbweaver.png",
+        date: "27 Sep 2025",
+        category: 0
+    },
+    {
+        title: "Sweat Bee",
+        description: <>A sweat bee (<i>Augochlora</i> spp.) seen at Rea Farm in Cape May, NJ.</>,
+        filename: "sweatbee.png",
+        date: "27 Sep 2025",
+        category: 0
+    },
+    {
+        title: "Skipper",
+        description: <>A Huron skipper (<i>Atalopedes huron</i>) seen in my backyard in northern NJ.</>,
+        filename: "skipper.png",
+        date: "3 Sep 2025",
+        category: 0
+    },
+    {
         title: "Common Buckeye",
-        description: "My first non-bird photo on here. A picture of a common buckeye butterfly I took at the Pole Farm in Mercer County, NJ.",
+        description: <>A common buckeye butterfly (<i>Junonia coenia</i>) seen at the Pole Farm in Mercer County, NJ.</>,
         filename: "buckeye_butterfly.png",
-        date: "24 August 2025",
+        date: "24 Aug 2025",
         category: 0
     },
     {
         title: "Common Yellowthroat",
-        description: "A picture of a perched common yellowthroat, taken at Troy Meadows in Parsippany, NJ.",
+        description: <>A perched common yellowthroat (<i>Geothlypis trichas</i>), seen at Troy Meadows in Parsippany, NJ.</>,
         filename: "yellowthroat.png",
         date: "25 May 2025",
         category: 0
     },
     {
         title: "Forster's Tern",
-        description: "A picture of a Forster's tern in flight, taken at Forsythe NWR near Galloway, NJ.",
+        description:  <>A Forster's tern (<i>Sterna forsteri</i>) in flight, seen at Forsythe NWR near Galloway, NJ.</>,
         filename: "tern.png",
         date: "23 Apr 2025",
         category: 0
     },
     {
         title: "Violet-green Swallow",
-        description: "A picture I took of an oddly cooperative violet-green swallow near La Ventana, Baja California Sur.",
+        description: <>An oddly cooperative violet-green swallow (<i>Tachycineta thalassina</i>) near La Ventana, Baja California Sur.</>,
         filename: "violetgreen.png",
         date: "22 Feb 2025",
         category: 0
     },
     {
         title: "California Quail",
-        description: "A picture I took of a California quail perched on a palm tree in La Ventana, Baja California Sur, Mexico.",
+        description: <>A California quail (<i>Callipepla californica</i>) perched on a palm tree in La Ventana, Baja California Sur, Mexico.</>,
         filename: "califquail.png",
         date: "22 Feb 2025",
         category: 0
     },
     {
         title: "Wood Duck",
-        description: "A rather confused wood duck, seen at the Potash Lake Recreational Area in Oakland, NJ.",
+        description: <>A rather confused wood duck (<i>Aix sponsa</i>), seen at the Potash Lake Recreational Area in Oakland, NJ.</>,
         filename: "woodduck.png",
         date: "26 Jan 2025",
         category: 0
     }, 
     {
         title: "Harlequin Duck",
-        description: "A harlequin duck, photographed at Barnegat Light in NJ.",
+        description: <>A male harlequin duck (<i>Histrionicus histrionicus</i>), photographed at Barnegat Light in NJ.</>,
         filename: "harlequinduck.png",
         date: "2 Jan 2025",
         category: 0
@@ -102,7 +123,7 @@ const images = [
     },
     {
         title: "Vermillion Flycatcher",
-        description: "A vermillion flycatcher, photographed during a vacation to the Quindio region of Colombia.",
+        description: <>A vermillion flycatcher (<i>Pyrocephalus obscurus</i>), photographed during a vacation to the Quindio region of Colombia.</>,
         filename: "vermillionflycatcher.png",
         date: "1 Sep 2024",
         category: 0
@@ -116,7 +137,7 @@ const images = [
     },
     {
         title: "Tree Swallow",
-        description: "A tree swallow on a branch, photographed at the Pole Farm in Mercer County, NJ.",
+        description: <>A tree swallow (<i>Tachycineta bicolor</i>) on a branch, photographed at the Pole Farm in Mercer County, NJ.</>,
         filename: "treeswallow.png",
         date: "30 Jun 2024",
         category: 0
@@ -137,42 +158,42 @@ const images = [
     },
     {
         title: "Chuck-will's-widow",
-        description: "A female chuck-will's-widow sitting on her nest. Photographed at Fort De Soto, FL.",
+        description: <>A female chuck-will's-widow (<i>Antrostomus caroliniensis</i>) sitting on her nest. Photographed at Fort De Soto, FL.</>,
         filename: "chuckwillswidow.png",
         date: "27 Apr 2024",
         category: 0
     },
     {
         title: "Purple Gallinule",
-        description: "A purple gallinule, photographed in Sarasota, FL while on vacation.",
+        description: <>A purple gallinule (<i>Porphyrio martinica</i>), photographed in Sarasota, FL while on vacation.</>,
         filename: "purplegallinule.png",
         date: "25 Apr 2024",
         category: 0
     },
     {
         title: "Oystercatcher",
-        description: "An American oystercatcher in front of a wave. I took this picture at Sandy Hook NWR in New Jersey.",
+        description: <>An American oystercatcher (<i>Haematopus palliatus</i>) in front of a wave, seen at Sandy Hook NWR in New Jersey.</>,
         filename: "oystercatcher.png",
         date: "21 Apr 2024",
         category: 0
     },
     {
         title: "Monk Parakeets",
-        description: <>One of the many nests of feral monk parakeets who have made their home in Edgewater, NJ.</>,
+        description: <>One of the many nests of feral monk parakeets (<i>Myiopsitta monachus</i>) who have made their home in Edgewater, NJ.</>,
         filename: "parakeets.png",
         date: "9 Apr 2024",
         category: 0
     },
     {
         title: "Osprey",
-        description: <>An osprey in flight over the pond at Garret Mountain Park near Patterson, NJ.</>,
+        description: <>An osprey (<i>Pandion haliaetus</i>) in flight over the pond at Garret Mountain Park near Patterson, NJ.</>,
         filename: "osprey.png",
         date: "7 Apr 2024",
         category: 0
     },
     {
         title: "Brown Creeper",
-        description: <>A brown creeper climbing a tree, sighted near Garret Mountain Park near Patterson, NJ.</>,
+        description: <>A brown creeper (<i>Certhia americana</i>) climbing a tree, sighted near Garret Mountain Park near Patterson, NJ.</>,
         filename: "creeper.png",
         date: "7 Apr 2024",
         category: 0
@@ -236,21 +257,21 @@ const images = [
     },
     {
         title: "Sanderling",
-        description: "A picture I took of a sanderling at Barnegat Light State Park in New Jersey.",
+        description: <>A sanderling (<i>Calidris alba</i>) at Barnegat Light State Park in New Jersey.</>,
         filename: "sanderling.png",
         date: "2 Feb 2024",
         category: 0
     },
     {
         title: "Red-breasted Merganser",
-        description: "A picture I took of a red-breasted merganser male showing his crest at Barnegat Light State Park in New Jersey.",
+        description: <>A red-breasted merganser (<i>Mergus serrator</i>) male showing his crest at Barnegat Light State Park in New Jersey.</>,
         filename: "merganser.png",
         date: "2 Feb 2024",
         category: 0
     },
     {
         title: "Long-tailed Duck Male",
-        description: "A picture of one of my favorite sea ducks: a long-tailed duck male, taken by me at Barnegat Light State Park in New Jersey.",
+        description: <>One of my favorite sea ducks: a long-tailed duck (<i>Clangula hyemalis</i>) male, seen at Barnegat Light State Park in New Jersey.</>,
         filename: "longtail2.png",
         date: "2 Feb 2024",
         category: 0
@@ -296,13 +317,6 @@ const images = [
         filename: "newtonfractal1.png",
         date: "8 Jan 2024",
         category: 1
-    },
-    {
-        title: "Loon in Flight",
-        description: "A picture of a red-throated loon starting to fly. I took this picture at Sandy Hook NWR in New Jersey.",
-        filename: "redthroatedloon.png",
-        date: "31 Dec 2023",
-        category: 0
     },
     {
         title: "Islamic-style Hyperbolic Tiling",
@@ -404,7 +418,7 @@ const images = [
     },
     {
         title: "Coal Dumper",
-        description: "A picture I took of the abandoned McMyler coal dumper in Port Reading, NJ.",
+        description: "The abandoned McMyler coal dumper in Port Reading, NJ.",
         filename: "coaldumper.jpg",
         date: "30 Aug 2023",
         category: 2
@@ -425,7 +439,7 @@ const images = [
     },
     {
         title: "Burrowing Owl",
-        description: "I took this picture of a burrowing owl (Athene cunicularia) at a baseball field in Cape Coral, FL.",
+        description: <>I took this picture of a burrowing owl (<i>Athene cunicularia</i>) at a baseball field in Cape Coral, FL.</>,
         filename: "burrowingowl.jpg",
         date: "22 Nov 2021",
         category: 0
@@ -470,6 +484,7 @@ function ImageGallery() {
         // Then sort images into those categories
         let imgData, i = 0;
         for (let img of images) {
+            console.log(img);
             let localPath = require("./pics/" + img.filename);
             imgData = {...img, localPath, idx: i};
             data[img.category].push(imgData);

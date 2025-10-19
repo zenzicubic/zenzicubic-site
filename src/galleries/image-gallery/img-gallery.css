@@ -41,6 +41,7 @@
     visibility: hidden;
     flex-direction: row;
     align-items: center;
+    box-sizing: border-box;
     justify-content: center;
 
     top: 0;
@@ -49,6 +50,7 @@
     width: 100vw;
     height: 100vh;
     z-index: 1000;
+    padding: var(--small-spacing);
     background-color: var(--dark-col-2);
     transition: opacity var(--transition-duration);
 }
