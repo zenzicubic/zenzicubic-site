@@ -25,7 +25,7 @@ function AboutPage() {
                 <hr />
 
                 <p>
-                    Hello. I&apos;m Zenzicubic, and I&apos;m a VTuber. I make YouTube videos about my passions: mainly practical chemistry and math (with a focus on aesthetically pleasing concepts, especially in group theory, dynamical systems, fractals, and geometry), but also whatever happens to interest me at a given moment. I&apos;ve been on YouTube since 2020, and I&apos;ve been a VTuber since January 2022. I film experiments in my home chemistry lab, and make animated math videos and explainers &#224; la 3Blue1Brown.
+                    Hello. I&apos;m Zenzicubic, and I make YouTube videos about my passions: mainly practical chemistry and math (with a focus on aesthetically pleasing concepts, especially in group theory, dynamical systems, fractals, and geometry), but also whatever happens to interest me at a given moment. I&apos;ve been on YouTube since 2020, and I have had a VTuber avatar in some form since January 2022. I film experiments in my home chemistry lab, and make animated math videos and explainers &#224; la 3Blue1Brown.
                     I&apos;ve also made <a
                         href="https://youtu.be/MA5kXfjLY7Y" 
                         target="_blank" rel="noopener noreferrer">
