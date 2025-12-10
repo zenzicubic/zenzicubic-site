@@ -25,6 +25,20 @@ const categories = ["Birds and nature", "Mathematical visualization", "Other"]
 
 const images = [
     {
+        title: "Bird Bath",
+        description: <>A white-throated sparrow (<i>Zonotrichia albicollis</i>) taking a bath, seen at Sandy Hook in NJ.</>,
+        filename: "bird_bath.png",
+        date: "16 Nov 2025",
+        category: 0
+    },
+    {
+        title: "Kinglet",
+        description: <>A golden-crowned kinglet (<i>Regulus satrapa</i>) seen on a juniper at Sandy Hook in NJ.</>,
+        filename: "kinglet.png",
+        date: "16 Nov 2025",
+        category: 0
+    },
+    {
         title: "Orb Weaver",
         description: <>A yellow garden spider (<i>Argiope aurantia</i>) seen at Rea Farm in Cape May, NJ.</>,
         filename: "orbweaver.png",
