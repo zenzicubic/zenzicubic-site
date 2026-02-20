@@ -25,6 +25,13 @@ const categories = ["Birds and nature", "Mathematical visualization", "Other"]
 
 const images = [
     {
+        title: "Carib",
+        description: <>A green-throated carib (<i>Eulampis holosericeus</i>) photographed at Grand &Eacute;tang National Park in Grenada.</>,
+        filename: "carib.jpg",
+        date: "20 Feb 2026",
+        category: 0
+    },
+    {
         title: "Bird Bath",
         description: <>A white-throated sparrow (<i>Zonotrichia albicollis</i>) taking a bath, seen at Sandy Hook in NJ.</>,
         filename: "bird_bath.png",
